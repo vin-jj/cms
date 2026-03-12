@@ -39,7 +39,7 @@ const heroStars = [
   { left: "10.9%", size: 2.5, top: "88%", twinkle: true },
   { left: "36.2%", size: 2, top: "9%" },
   { left: "58.6%", size: 2, top: "87%" },
-] as const;
+];
 
 function cx(...values: Array<string | false | null | undefined>) {
   return values.filter(Boolean).join(" ");
