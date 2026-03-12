@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Pretendard Variable", -apple-system, "Segoe UI", sans-serif;
+  --font-sans-ja: "Pretendard JP", -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-sans);
+}
+
+:lang(ja) {
+  font-family: var(--font-sans-ja);
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+@layer utilities {
+  .type-h1 {
+    font-size: 36px;
+    line-height: 40px;
+    letter-spacing: -0.6px;
+    font-weight: 300;
+  }
+
+  .type-h2 {
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: -0.3px;
+    font-weight: 400;
+  }
+
+  .type-h3 {
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.2px;
+    font-weight: 500;
+  }
+
+  .type-body-lg {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+    font-weight: 300;
+  }
+
+  .type-body-md {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    font-weight: 300;
+  }
+
+  .type-body-sm {
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0;
+    font-weight: 300;
+  }
+
+  .type-button {
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: -0.2px;
+    font-weight: 500;
+  }
+
+  .type-mono {
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0;
+    font-weight: 400;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes hero-star-twinkle {
+  0%,
+  100% {
+    opacity: 0.18;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.68;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes hero-gradient-flow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+    opacity: 0.68;
+  }
+
+  50% {
+    background-position: 100% 50%;
+    opacity: 0.84;
+  }
+}
