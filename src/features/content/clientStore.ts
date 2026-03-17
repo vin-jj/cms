@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from "react";
 import {
+  createLocalizedContent,
   getSeedManagedContents,
   initialManagedContents,
   MANAGED_CONTENT_STORAGE_KEY,
   MANAGED_CONTENT_STORE_EVENT,
   sortManagedContents,
+  type LocalizedContent,
   type ManagedContentEntry,
   type ManagedContentSection,
   type ManagedContentStatus,
@@ -17,18 +19,32 @@ function canUseStorage() {
   return typeof window !== "undefined";
 }
 
+function normalizeLocalizedContent(value: Partial<LocalizedContent> | string | undefined) {
+  if (typeof value === "string") {
+    return createLocalizedContent(value);
+  }
+
+  return {
+    en: value?.en ?? "",
+    ko: value?.ko ?? value?.en ?? "",
+    ja: value?.ja ?? value?.en ?? "",
+  };
+}
+
 function normalizeEntry(item: Partial<ManagedContentEntry>): ManagedContentEntry {
   return {
     authorName: item.authorName ?? "",
     authorRole: item.authorRole ?? "",
-    bodyMarkdown: item.bodyMarkdown ?? "",
+    bodyMarkdown: normalizeLocalizedContent(item.bodyMarkdown),
     categorySlug: item.categorySlug ?? "use-cases",
     dateIso: item.dateIso ?? "",
+    externalUrl: item.externalUrl ?? "",
     id: item.id ?? "",
     imageSrc: item.imageSrc ?? "",
     section: item.section ?? "demo",
     status: item.status ?? "draft",
-    title: item.title ?? "",
+    summary: normalizeLocalizedContent(item.summary),
+    title: normalizeLocalizedContent(item.title),
   };
 }
 
@@ -47,14 +63,16 @@ function readLegacyUseCases() {
       normalizeEntry({
         authorName: item.authorName,
         authorRole: item.authorRole,
-        bodyMarkdown: item.bodyMarkdown,
+        bodyMarkdown: createLocalizedContent(item.bodyMarkdown),
         categorySlug: "use-cases",
         dateIso: item.dateIso,
+        externalUrl: "",
         id: item.id,
         imageSrc: item.imageSrc,
         section: "demo",
         status: item.status,
-        title: item.title,
+        summary: createLocalizedContent(),
+        title: createLocalizedContent(item.title),
       }),
     );
   } catch {

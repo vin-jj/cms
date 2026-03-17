@@ -4,7 +4,7 @@ import DocsDetailPage, { type DocsDetailPageProps } from "./DocsDetailPage";
 import type { Locale } from "@/constants/i18n";
 import { useManagedContents } from "@/features/content/clientStore";
 import { docsCategoryConfigs, getCategoryLabel } from "@/features/content/config";
-import { formatPublicDate, getPublicDetailHref, getWriterLabel } from "@/features/content/data";
+import { formatPublicDate, getLocalizedContent, getPublicDetailHref, getWriterLabel } from "@/features/content/data";
 
 type DocsDetailClientPageProps = {
   fallbackProps: DocsDetailPageProps;
@@ -31,19 +31,19 @@ export default function DocsDetailClientPage({
       category: getCategoryLabel(docsCategoryConfigs, item.categorySlug, locale),
       href: getPublicDetailHref("documentation", locale, item.id),
       imageSrc: item.imageSrc,
-      title: item.title,
+      title: getLocalizedContent(item.title, locale),
     }));
 
   return (
     <DocsDetailPage
       {...fallbackProps}
-      bodyMarkdown={currentItem.bodyMarkdown}
+      bodyMarkdown={getLocalizedContent(currentItem.bodyMarkdown, locale)}
       category={getCategoryLabel(docsCategoryConfigs, currentItem.categorySlug, locale)}
       contentListItems={relatedItems}
       date={formatPublicDate(locale, currentItem.dateIso)}
-      heroImageAlt={currentItem.title}
+      heroImageAlt={getLocalizedContent(currentItem.title, locale)}
       heroImageSrc={currentItem.imageSrc}
-      title={currentItem.title}
+      title={getLocalizedContent(currentItem.title, locale)}
       writer={getWriterLabel(currentItem)}
     />
   );

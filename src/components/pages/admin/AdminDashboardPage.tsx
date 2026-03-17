@@ -14,6 +14,7 @@ function StatCard({
   title: string;
 }) {
   return (
+    /* 대시보드에서 반복 사용하는 공통 통계 카드 */
     <article className={cx("rounded-box border border-border bg-bg-content p-5", className)}>
       <div className="flex flex-col gap-5">
         <p className="m-0 type-body-md text-mute-fg">{title}</p>
@@ -31,6 +32,7 @@ function BarChart({
   colorClass?: string;
 }) {
   return (
+    /* 간단한 막대 차트 프리뷰 */
     <div className="flex h-[140px] items-end gap-2">
       {bars.map((value, index) => (
         <div key={`${value}-${index}`} className="flex flex-1 flex-col justify-end">
@@ -45,6 +47,7 @@ function BarChart({
 
 function MiniLineChart() {
   return (
+    /* 구독자 추이를 보여주는 라인 차트 */
     <svg className="h-[140px] w-full" viewBox="0 0 300 140" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M10 98C36 74 60 80 82 62C104 44 120 40 146 54C168 66 184 102 212 94C236 86 252 28 290 36" stroke="#FF892F" strokeWidth="2.5" strokeLinecap="round" />
       <path d="M10 98C36 74 60 80 82 62C104 44 120 40 146 54C168 66 184 102 212 94C236 86 252 28 290 36V140H10V98Z" fill="url(#subscribers-fill)" fillOpacity="0.18" />
@@ -72,6 +75,7 @@ function PieChart({
   });
 
   return (
+    /* 방문 지역 비중을 표시하는 원형 차트 */
     <div className="flex items-center gap-8">
       <div
         className="h-[160px] w-[160px] rounded-full"
@@ -96,11 +100,13 @@ function PieChart({
 export default function AdminDashboardPage() {
   return (
     <section className="flex flex-col gap-8">
+      {/* 관리자 첫 화면 요약 헤더 */}
       <AdminHeader
         description="Manage homepage publishing, monitor traffic, and keep an eye on content health."
         title="Dashboard"
       />
 
+      {/* 운영 지표를 카드형으로 나열 */}
       <div className="grid gap-4 xl:grid-cols-3">
         <StatCard title="Visitors">
           <div className="flex items-end justify-between">

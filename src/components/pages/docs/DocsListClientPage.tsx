@@ -10,7 +10,7 @@ import {
   getPublicMenuItems,
   type DocsCategorySlug,
 } from "@/features/content/config";
-import { getPublicDetailHref } from "@/features/content/data";
+import { getLocalizedContent, getPublicDetailHref } from "@/features/content/data";
 
 type DocsListClientPageProps = {
   locale: Locale;
@@ -32,7 +32,7 @@ export default function DocsListClientPage({
       category: getCategoryLabel(docsCategoryConfigs, item.categorySlug, locale),
       href: getPublicDetailHref("documentation", locale, item.id),
       imageSrc: item.imageSrc,
-      title: item.title,
+      title: getLocalizedContent(item.title, locale),
     }));
 
   const filteredItems =

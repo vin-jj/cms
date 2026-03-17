@@ -13,6 +13,7 @@ export default function AdminDemoPage({
   title = "Demo",
 }: AdminDemoPageProps) {
   return (
+    /* Demo 섹션은 공통 관리 리스트 페이지를 카테고리별로 재사용한다 */
     <AdminManagedContentListPage
       categorySlug={categorySlug}
       description={description}

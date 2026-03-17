@@ -5,7 +5,7 @@ import type { Locale } from "@/constants/i18n";
 import type { DocsDetailPageProps } from "../docs/DocsDetailPage";
 import { useManagedContents } from "@/features/content/clientStore";
 import { demoCategoryConfigs, getCategoryLabel } from "@/features/content/config";
-import { formatPublicDate, getPublicDetailHref, getWriterLabel } from "@/features/content/data";
+import { formatPublicDate, getLocalizedContent, getPublicDetailHref, getWriterLabel } from "@/features/content/data";
 
 type DemoDetailClientPageProps = {
   fallbackProps: DocsDetailPageProps;
@@ -35,19 +35,19 @@ export default function DemoDetailClientPage({
       category: getCategoryLabel(demoCategoryConfigs, item.categorySlug, locale),
       href: getPublicDetailHref("demo", locale, item.id),
       imageSrc: item.imageSrc,
-      title: item.title,
+      title: getLocalizedContent(item.title, locale),
     }));
 
   return (
     <DemoDetailPage
       {...fallbackProps}
-      bodyMarkdown={currentUseCase.bodyMarkdown}
+      bodyMarkdown={getLocalizedContent(currentUseCase.bodyMarkdown, locale)}
       category={getCategoryLabel(demoCategoryConfigs, currentUseCase.categorySlug, locale)}
       contentListItems={relatedPublishedItems}
       date={formatPublicDate(locale, currentUseCase.dateIso)}
-      heroImageAlt={currentUseCase.title}
+      heroImageAlt={getLocalizedContent(currentUseCase.title, locale)}
       heroImageSrc={currentUseCase.imageSrc}
-      title={currentUseCase.title}
+      title={getLocalizedContent(currentUseCase.title, locale)}
       writer={getWriterLabel(currentUseCase)}
     />
   );

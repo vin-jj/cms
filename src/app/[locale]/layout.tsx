@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { isLocale, locales, type Locale } from "../../constants/i18n";
 import RevealObserver from "../../components/common/RevealObserver";
+import SeoRuntime from "../../components/common/SeoRuntime";
 import Footer from "../../components/layout/Footer";
 import Gnb from "../../components/layout/Gnb";
 
@@ -60,6 +61,7 @@ export default async function LocaleLayout({
   return (
     <div className="flex min-h-screen flex-col bg-bg" data-locale={locale as Locale}>
       <RevealObserver />
+      <SeoRuntime locale={locale as Locale} />
       <Gnb actionLabel={shellCopy.navActionLabel} items={shellCopy.navItems} locale={locale} />
       <main className="flex-1 pt-[100px] text-fg md:pt-30">
         {children}
