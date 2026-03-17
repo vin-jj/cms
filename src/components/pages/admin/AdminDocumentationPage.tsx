@@ -13,6 +13,7 @@ export default function AdminDocumentationPage({
   title = "Documentation",
 }: AdminDocumentationPageProps) {
   return (
+    /* Documentation 섹션도 동일한 공통 관리 리스트를 사용한다 */
     <AdminManagedContentListPage
       categorySlug={categorySlug}
       description={description}

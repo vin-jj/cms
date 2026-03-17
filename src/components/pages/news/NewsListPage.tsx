@@ -20,6 +20,7 @@ function NewsListCard({ date, href, imageSrc, summary, title }: NewsListItem) {
     /* 뉴스 카드 1개: 모바일은 세로, 데스크톱은 텍스트/썸네일 2열 */
     <a
       className="group flex w-full flex-col gap-4 md:flex-row md:items-start md:gap-[30px]"
+      data-reveal
       href={href}
       rel="noreferrer noopener"
       target="_blank"

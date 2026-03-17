@@ -4,26 +4,31 @@ import {
   docsCategoryConfigs,
   type DemoCategorySlug,
   type DocsCategorySlug,
+  type NewsCategorySlug,
 } from "./config";
 import { getStaticDemoEntries } from "./demoStatic";
 import { getStaticDocsEntries } from "./docsStatic";
+import { getStaticNewsEntries } from "./newsStatic";
 import { initialUseCases } from "@/features/useCases/data";
 
-export type ManagedContentSection = "demo" | "documentation";
+export type ManagedContentSection = "demo" | "documentation" | "news";
 export type ManagedContentStatus = "draft" | "hidden" | "published";
-export type ManagedContentCategorySlug = Exclude<DemoCategorySlug | DocsCategorySlug, "all">;
+export type ManagedContentCategorySlug = Exclude<DemoCategorySlug | DocsCategorySlug, "all"> | NewsCategorySlug;
+export type LocalizedContent = Record<Locale, string>;
 
 export type ManagedContentEntry = {
   authorName: string;
   authorRole: string;
-  bodyMarkdown: string;
+  bodyMarkdown: LocalizedContent;
   categorySlug: ManagedContentCategorySlug;
   dateIso: string;
+  externalUrl: string;
   id: string;
   imageSrc: string;
   section: ManagedContentSection;
   status: ManagedContentStatus;
-  title: string;
+  summary: LocalizedContent;
+  title: LocalizedContent;
 };
 
 export const MANAGED_CONTENT_STORAGE_KEY = "querypie-admin-managed-content";
@@ -40,15 +45,29 @@ export function createEmptyManagedContentDraft(
   return {
     authorName: "",
     authorRole: "",
-    bodyMarkdown: "",
+    bodyMarkdown: createLocalizedContent(),
     categorySlug,
     dateIso: getTodayIsoDate(),
+    externalUrl: "",
     id: "new",
     imageSrc: "",
     section,
     status: "draft",
-    title: "",
+    summary: createLocalizedContent(),
+    title: createLocalizedContent(),
   };
+}
+
+export function createLocalizedContent(value = ""): LocalizedContent {
+  return {
+    en: value,
+    ko: value,
+    ja: value,
+  };
+}
+
+export function getLocalizedContent(content: LocalizedContent, locale: Locale) {
+  return content[locale] || content.en || content.ko || content.ja || "";
 }
 
 export function slugifyTitle(title: string) {
@@ -115,6 +134,10 @@ export function getManagedCategoryLabel(
   categorySlug: ManagedContentCategorySlug,
   locale: Locale,
 ) {
+  if (section === "news") {
+    return locale === "ko" ? "뉴스" : "News";
+  }
+
   const configs = section === "demo" ? demoCategoryConfigs : docsCategoryConfigs;
   return configs.find((config) => config.slug === categorySlug)?.label[locale] ?? "";
 }
@@ -123,6 +146,9 @@ export function getAdminCategoryHref(
   section: ManagedContentSection,
   categorySlug: ManagedContentCategorySlug,
 ) {
+  if (section === "news") {
+    return "/admin/news";
+  }
   return `/admin/${section}/${categorySlug}`;
 }
 
@@ -131,11 +157,16 @@ export function getAdminDetailHref(
   categorySlug: ManagedContentCategorySlug,
   slug: string,
 ) {
+  if (section === "news") {
+    return `/admin/news/${slug}`;
+  }
   return `/admin/${section}/${categorySlug}/${slug}`;
 }
 
 export function getPublicListHref(section: ManagedContentSection, locale: Locale) {
-  return section === "demo" ? `/${locale}/demo` : `/${locale}/docs`;
+  if (section === "demo") return `/${locale}/demo`;
+  if (section === "documentation") return `/${locale}/docs`;
+  return `/${locale}/news`;
 }
 
 export function getPublicDetailHref(
@@ -150,43 +181,111 @@ export const initialManagedContents: ManagedContentEntry[] = sortManagedContents
   ...initialUseCases.map((item) => ({
     authorName: item.authorName,
     authorRole: item.authorRole,
-    bodyMarkdown: item.bodyMarkdown,
+    bodyMarkdown: createLocalizedContent(item.bodyMarkdown),
     categorySlug: item.categorySlug,
     dateIso: item.dateIso,
+    externalUrl: "",
     id: item.id,
     imageSrc: item.imageSrc,
     section: "demo" as const,
     status: item.status,
-    title: item.title,
+    summary: createLocalizedContent(),
+    title: createLocalizedContent(item.title),
   })),
-  ...getStaticDemoEntries("en").map((item) => ({
-    authorName: item.writer,
-    authorRole: "",
-    bodyMarkdown: item.bodyMarkdown,
-    categorySlug: item.categorySlug,
-    dateIso: item.date,
-    id: item.slug,
-    imageSrc: item.imageSrc,
-    section: "demo" as const,
-    status: "published" as const,
-    title: item.title,
-  })),
-  ...getStaticDocsEntries("en").map((item) => ({
-    authorName: item.writer,
-    authorRole: "",
-    bodyMarkdown: item.bodyMarkdown,
-    categorySlug: item.categorySlug,
-    dateIso: item.date,
-    id: item.slug,
-    imageSrc: item.imageSrc,
-    section: "documentation" as const,
-    status: "published" as const,
-    title: item.title,
-  })),
+  ...buildLocalizedDemoSeedEntries(),
+  ...buildLocalizedDocsSeedEntries(),
+  ...buildLocalizedNewsSeedEntries(),
 ]);
 
 export function getSeedManagedContents(section?: ManagedContentSection) {
   return section
     ? initialManagedContents.filter((item) => item.section === section)
     : initialManagedContents;
+}
+
+function buildLocalizedDemoSeedEntries(): ManagedContentEntry[] {
+  const enItems = getStaticDemoEntries("en");
+  const koItems = getStaticDemoEntries("ko");
+  const jaItems = getStaticDemoEntries("ja");
+
+  return enItems.map((item, index) => ({
+    authorName: item.writer,
+    authorRole: "",
+    bodyMarkdown: {
+      en: item.bodyMarkdown,
+      ko: koItems[index]?.bodyMarkdown ?? item.bodyMarkdown,
+      ja: jaItems[index]?.bodyMarkdown ?? item.bodyMarkdown,
+    },
+    categorySlug: item.categorySlug,
+    dateIso: item.date,
+    externalUrl: "",
+    id: item.slug,
+    imageSrc: item.imageSrc,
+    section: "demo" as const,
+    status: "published" as const,
+    summary: createLocalizedContent(),
+    title: {
+      en: item.title,
+      ko: koItems[index]?.title ?? item.title,
+      ja: jaItems[index]?.title ?? item.title,
+    },
+  }));
+}
+
+function buildLocalizedDocsSeedEntries(): ManagedContentEntry[] {
+  const enItems = getStaticDocsEntries("en");
+  const koItems = getStaticDocsEntries("ko");
+  const jaItems = getStaticDocsEntries("ja");
+
+  return enItems.map((item, index) => ({
+    authorName: item.writer,
+    authorRole: "",
+    bodyMarkdown: {
+      en: item.bodyMarkdown,
+      ko: koItems[index]?.bodyMarkdown ?? item.bodyMarkdown,
+      ja: jaItems[index]?.bodyMarkdown ?? item.bodyMarkdown,
+    },
+    categorySlug: item.categorySlug,
+    dateIso: item.date,
+    externalUrl: "",
+    id: item.slug,
+    imageSrc: item.imageSrc,
+    section: "documentation" as const,
+    status: "published" as const,
+    summary: createLocalizedContent(),
+    title: {
+      en: item.title,
+      ko: koItems[index]?.title ?? item.title,
+      ja: jaItems[index]?.title ?? item.title,
+    },
+  }));
+}
+
+function buildLocalizedNewsSeedEntries(): ManagedContentEntry[] {
+  const enItems = getStaticNewsEntries("en");
+  const koItems = getStaticNewsEntries("ko");
+  const jaItems = getStaticNewsEntries("ja");
+
+  return enItems.map((item, index) => ({
+    authorName: "QueryPie Team",
+    authorRole: "PR",
+    bodyMarkdown: createLocalizedContent(),
+    categorySlug: "news" as const,
+    dateIso: item.dateIso,
+    externalUrl: item.externalUrl,
+    id: item.slug,
+    imageSrc: item.imageSrc,
+    section: "news" as const,
+    status: "published" as const,
+    summary: {
+      en: item.summary,
+      ko: koItems[index]?.summary ?? item.summary,
+      ja: jaItems[index]?.summary ?? item.summary,
+    },
+    title: {
+      en: item.title,
+      ko: koItems[index]?.title ?? item.title,
+      ja: jaItems[index]?.title ?? item.title,
+    },
+  }));
 }

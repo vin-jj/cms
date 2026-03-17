@@ -14,6 +14,8 @@ export type DocsCategorySlug =
   | "manuals"
   | "blogs";
 
+export type NewsCategorySlug = "news";
+
 type CategoryConfig<TSlug extends string> = {
   href: (locale: Locale) => string;
   label: Record<Locale, string>;

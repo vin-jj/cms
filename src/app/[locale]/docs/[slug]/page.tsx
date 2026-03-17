@@ -4,6 +4,7 @@ import DocsDetailClientPage from "../../../../components/pages/docs/DocsDetailCl
 import type { DocsDetailPageProps } from "../../../../components/pages/docs/DocsDetailPage";
 import {
   getManagedCategoryLabel,
+  getLocalizedContent,
   getPublicDetailHref,
   getSeedManagedContents,
 } from "@/features/content/data";
@@ -24,7 +25,7 @@ export default async function DocsDetailRoute({ params }: DocsDetailRouteProps) 
       category: getManagedCategoryLabel("documentation", entry.categorySlug, locale),
       href: getPublicDetailHref("documentation", locale, entry.id),
       imageSrc: entry.imageSrc,
-      title: entry.title,
+      title: getLocalizedContent(entry.title, locale),
     }));
 
   return (
@@ -32,7 +33,7 @@ export default async function DocsDetailRoute({ params }: DocsDetailRouteProps) 
       fallbackProps={{
         docsHref: `/${locale}/docs`,
         slug,
-        bodyMarkdown: currentEntry?.bodyMarkdown ?? "",
+        bodyMarkdown: currentEntry ? getLocalizedContent(currentEntry.bodyMarkdown, locale) : "",
         category: currentEntry
           ? getManagedCategoryLabel("documentation", currentEntry.categorySlug, locale)
           : "",
@@ -41,9 +42,9 @@ export default async function DocsDetailRoute({ params }: DocsDetailRouteProps) 
         contentListLinks: [],
         contentListTitle: "Contents List",
         date: currentEntry?.dateIso ?? "",
-        heroImageAlt: currentEntry?.title ?? "",
+        heroImageAlt: currentEntry ? getLocalizedContent(currentEntry.title, locale) : "",
         heroImageSrc: currentEntry?.imageSrc ?? "/images/content/article-01.png",
-        title: currentEntry?.title ?? "",
+        title: currentEntry ? getLocalizedContent(currentEntry.title, locale) : "",
         writer: currentEntry
           ? currentEntry.authorRole
             ? `${currentEntry.authorName} / ${currentEntry.authorRole}`

@@ -10,7 +10,7 @@ import {
   getPublicMenuItems,
   type DemoCategorySlug,
 } from "@/features/content/config";
-import { getPublicDetailHref } from "@/features/content/data";
+import { getLocalizedContent, getPublicDetailHref } from "@/features/content/data";
 
 type DemoListClientPageProps = {
   locale: Locale;
@@ -32,7 +32,7 @@ export default function DemoListClientPage({
       category: getCategoryLabel(demoCategoryConfigs, item.categorySlug, locale),
       href: getPublicDetailHref("demo", locale, item.id),
       imageSrc: item.imageSrc,
-      title: item.title,
+      title: getLocalizedContent(item.title, locale),
     }));
 
   const filteredItems =
