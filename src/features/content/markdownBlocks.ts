@@ -10,6 +10,7 @@ export function splitMarkdownBlocks(markdown: string) {
   let buffer: string[] = [];
   let inCodeBlock = false;
 
+<<<<<<< HEAD
   function getListType(line: string) {
     if (/^\s*[-*]\s+/.test(line)) {
       return "bullet";
@@ -34,6 +35,8 @@ export function splitMarkdownBlocks(markdown: string) {
     return /^\s{0,3}#{1,6}\s+/.test(line);
   }
 
+=======
+>>>>>>> origin/main
   function flush() {
     const nextBlock = buffer.join("\n").trim();
 
@@ -46,10 +49,13 @@ export function splitMarkdownBlocks(markdown: string) {
 
   for (const line of lines) {
     if (/^```/.test(line.trim())) {
+<<<<<<< HEAD
       if (!inCodeBlock && buffer.length > 0) {
         flush();
       }
 
+=======
+>>>>>>> origin/main
       buffer.push(line);
       inCodeBlock = !inCodeBlock;
 
@@ -69,6 +75,7 @@ export function splitMarkdownBlocks(markdown: string) {
       continue;
     }
 
+<<<<<<< HEAD
     const currentListType = getListType(line);
     const previousListType = getListType(buffer[buffer.length - 1] ?? "");
     const currentIsTable = isTableLine(line);
@@ -105,6 +112,9 @@ export function splitMarkdownBlocks(markdown: string) {
     if (currentIsHeading) {
       flush();
     }
+=======
+    buffer.push(line);
+>>>>>>> origin/main
   }
 
   flush();

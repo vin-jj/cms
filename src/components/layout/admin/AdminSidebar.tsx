@@ -173,7 +173,11 @@ export default function AdminSidebar({
           <Button
             arrow={false}
             className="w-full justify-center"
+<<<<<<< HEAD
             onClick={() => window.open(getLocalePath("en", "/"), "_blank", "noopener,noreferrer")}
+=======
+            onClick={() => window.open("/en", "_blank", "noopener,noreferrer")}
+>>>>>>> origin/main
             style="round"
             variant="secondary"
           >

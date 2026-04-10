@@ -1,6 +1,9 @@
 import { splitMarkdownBlocks } from "./markdownBlocks";
 import { highlightCodeToHtml } from "./codeHighlight";
+<<<<<<< HEAD
 import { parseMarkdownTable } from "./markdownTable";
+=======
+>>>>>>> origin/main
 
 type TiptapNode = {
   attrs?: Record<string, unknown>;
@@ -53,6 +56,7 @@ function normalizeContentAssetSrc(src: string) {
 }
 
 function parseMarkdownImage(block: string) {
+<<<<<<< HEAD
   const legacyFigureLabelMatch = block.match(/^!\[\[([^\]]+)\]\s*([^\]]+)\]\(([^)]+)\)$/);
 
   if (legacyFigureLabelMatch) {
@@ -64,6 +68,8 @@ function parseMarkdownImage(block: string) {
     };
   }
 
+=======
+>>>>>>> origin/main
   const legacyBracketMatch = block.match(/^!\[\[(.+)\]\(([^)]+)\)$/);
 
   if (legacyBracketMatch) {
@@ -135,6 +141,7 @@ function createTextNode(
 }
 
 function convertInlineMarkdown(text: string) {
+<<<<<<< HEAD
   const tokens = text.split(/(<a\s+href="[^"]+"[^>]*>.*?<\/a>|\[[^\]]+\]\([^)]+\)|\*\*[^*]+\*\*|__[^_]+__|\*[^*]+\*|_[^_]+_|`[^`]+`)/g);
   const nodes: TiptapNode[] = [];
 
@@ -153,6 +160,12 @@ function convertInlineMarkdown(text: string) {
       }
     }
 
+=======
+  const tokens = text.split(/(\[[^\]]+\]\([^)]+\)|\*\*[^*]+\*\*|__[^_]+__|\*[^*]+\*|_[^_]+_|`[^`]+`)/g);
+  const nodes: TiptapNode[] = [];
+
+  for (const token of tokens.filter(Boolean)) {
+>>>>>>> origin/main
     if (/^\[[^\]]+\]\([^)]+\)$/.test(token)) {
       const match = token.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
       if (match) {
@@ -225,6 +238,7 @@ function convertMarkdownBlock(block: string): ConvertedBlock {
 
   const imageMatch = parseMarkdownImage(trimmedBlock);
   if (imageMatch) {
+<<<<<<< HEAD
     const figcaption = imageMatch.caption ? `<figcaption>${escapeHtml(imageMatch.caption)}</figcaption>` : "";
     return {
       html: imageMatch.caption
@@ -234,6 +248,13 @@ function convertMarkdownBlock(block: string): ConvertedBlock {
         attrs: {
           alt: imageMatch.alt,
           caption: imageMatch.caption ?? "",
+=======
+    return {
+      html: `<img src="${escapeHtml(imageMatch.src)}" alt="${escapeHtml(imageMatch.alt)}" />`,
+      node: {
+        attrs: {
+          alt: imageMatch.alt,
+>>>>>>> origin/main
           src: imageMatch.src,
         },
         type: "image",
@@ -314,9 +335,15 @@ function convertMarkdownBlock(block: string): ConvertedBlock {
     };
   }
 
+<<<<<<< HEAD
   if (lines.every((line) => /^\s*[-*]\s+/.test(line))) {
     const items = lines.map((line) => {
       const content = convertInlineMarkdown(line.replace(/^\s*[-*]\s+/, ""));
+=======
+  if (lines.every((line) => /^-\s+/.test(line))) {
+    const items = lines.map((line) => {
+      const content = convertInlineMarkdown(line.replace(/^-\s+/, ""));
+>>>>>>> origin/main
       return {
         html: `<li><p>${renderInlineNodesHtml(content)}</p></li>`,
         node: {
@@ -332,9 +359,25 @@ function convertMarkdownBlock(block: string): ConvertedBlock {
     };
   }
 
+<<<<<<< HEAD
   const table = parseMarkdownTable(lines);
   if (table) {
     const { bodyRows, headerRow } = table;
+=======
+  if (
+    lines.length >= 2 &&
+    lines.every((line) => /^\|.*\|$/.test(line.trim())) &&
+    /^\|(\s*:?-{3,}:?\s*\|)+$/.test(lines[1].trim())
+  ) {
+    const rows = lines.map((line) =>
+      line
+        .trim()
+        .slice(1, -1)
+        .split("|")
+        .map((cell) => cell.trim()),
+    );
+    const [headerRow, , ...bodyRows] = rows;
+>>>>>>> origin/main
 
     const headerCells = headerRow.map((cell) => {
       const content = convertInlineMarkdown(cell);

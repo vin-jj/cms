@@ -1,5 +1,6 @@
 [
   {
+<<<<<<< HEAD
     "authorName": "",
     "authorRole": "",
     "bodyHtml": {
@@ -2632,6 +2633,8 @@
     }
   },
   {
+=======
+>>>>>>> origin/main
     "authorName": "ㅁㄴㅇㄹ",
     "authorRole": "ㅁㄴㅇㄹ",
     "bodyHtml": {
@@ -2650,6 +2653,7 @@
       "ja": ""
     },
     "categorySlug": "use-cases",
+<<<<<<< HEAD
     "contentFormat": "tiptap",
     "contentType": "content",
     "dateIso": "2026-03-31",
@@ -2667,6 +2671,20 @@
     "sortOrder": 2,
     "status": "hidden",
     "storageId": "cnt_000098",
+=======
+    "contentFormat": "markdown",
+    "contentType": "content",
+    "dateIso": "2026-03-31",
+    "externalUrl": "",
+    "hideHeroImage": false,
+    "id": "content-1774961489716",
+    "imageSrc": "",
+    "relatedIds": [],
+    "section": "demo",
+    "sortOrder": 1,
+    "status": "published",
+    "storageId": "cnt_000003",
+>>>>>>> origin/main
     "summary": {
       "en": "",
       "ko": "",
@@ -2679,8 +2697,13 @@
     }
   },
   {
+<<<<<<< HEAD
     "authorName": "",
     "authorRole": "",
+=======
+    "authorName": "vin정연재",
+    "authorRole": "design",
+>>>>>>> origin/main
     "bodyHtml": {
       "en": "",
       "ko": "",
@@ -2696,6 +2719,7 @@
       "ko": "",
       "ja": ""
     },
+<<<<<<< HEAD
     "categorySlug": "webinars",
     "contentFormat": "tiptap",
     "contentType": "content",
@@ -3245,6 +3269,35 @@
   {
     "authorName": "",
     "authorRole": "",
+=======
+    "categorySlug": "use-cases",
+    "contentFormat": "markdown",
+    "contentType": "content",
+    "dateIso": "2026-03-31",
+    "externalUrl": "",
+    "hideHeroImage": false,
+    "id": "테스트-training-composer-for-longer-horizons",
+    "imageSrc": "/uploads/thumbnail-container-2-1774961728684.webp",
+    "relatedIds": [],
+    "section": "demo",
+    "sortOrder": 1,
+    "status": "published",
+    "storageId": "cnt_000004",
+    "summary": {
+      "en": "",
+      "ko": "",
+      "ja": ""
+    },
+    "title": {
+      "en": "테스트 Training Composer for longer horizons",
+      "ko": "",
+      "ja": ""
+    }
+  },
+  {
+    "authorName": "vin",
+    "authorRole": "tester",
+>>>>>>> origin/main
     "bodyHtml": {
       "en": "",
       "ko": "",
@@ -3260,6 +3313,7 @@
       "ko": "",
       "ja": ""
     },
+<<<<<<< HEAD
     "categorySlug": "webinars",
     "contentFormat": "tiptap",
     "contentType": "content",
@@ -3273,10 +3327,21 @@
     "hideHeroImage": true,
     "id": "cloud-certification-shortest-path",
     "imageSrc": "/demo/webinars/wb-thumb-1.webp",
+=======
+    "categorySlug": "use-cases",
+    "contentFormat": "tiptap",
+    "contentType": "content",
+    "dateIso": "2026-03-31",
+    "externalUrl": "",
+    "hideHeroImage": true,
+    "id": "Training Composer for longer horizons",
+    "imageSrc": "/uploads/thumbnail-container-1774961898406.webp",
+>>>>>>> origin/main
     "relatedIds": [],
     "section": "demo",
     "sortOrder": 0,
     "status": "published",
+<<<<<<< HEAD
     "storageId": "cnt_000031",
     "summary": {
       "en": "Are you going round in circles trying to get certified? Discover the shortest path to getting certified in the cloud era with our best practices.",
@@ -3898,6 +3963,18 @@
       "en": "Achieve Perfect ZTNA Security with Prisma Access!",
       "ko": "ZTNA보안, Prisma Access로 완벽하게!",
       "ja": "Prisma Accessで完璧なZTNAセキュリティを実現！"
+=======
+    "storageId": "cnt_000006",
+    "summary": {
+      "en": "",
+      "ko": "",
+      "ja": ""
+    },
+    "title": {
+      "en": "Training Composer for longer horizons",
+      "ko": "",
+      "ja": ""
+>>>>>>> origin/main
     }
   }
 ]

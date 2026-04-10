@@ -155,7 +155,11 @@ export default function AdminSeoPage() {
               style="round"
               variant="outline"
             >
+<<<<<<< HEAD
               {isDiscovering ? <LoadingText text="탐색 중..." /> : "미등록 페이지 탐색"}
+=======
+              {isDiscovering ? "탐색 중..." : "미등록 페이지 탐색"}
+>>>>>>> origin/main
             </Button>
           </div>
         </div>
@@ -221,7 +225,11 @@ export default function AdminSeoPage() {
                         {ogImageDisplayValue}
                       </span>
                     </div>
+<<<<<<< HEAD
                     <Button arrow={false} className="w-full justify-center sm:w-auto" onClick={() => fileInputRef.current?.click()} style="round" variant="outline">
+=======
+                    <Button size="default" arrow={false} className="w-full justify-center sm:w-auto" onClick={() => fileInputRef.current?.click()} style="round" variant="outline">
+>>>>>>> origin/main
                       추가
                     </Button>
                   </div>
@@ -271,10 +279,17 @@ export default function AdminSeoPage() {
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <p className="m-0 type-body-sm text-mute-fg">실시간 적용</p>
                 <div className="flex flex-col gap-3 sm:flex-row">
+<<<<<<< HEAD
                   <Button arrow={false} onClick={() => resetSeoEntry(currentEntry.key)} style="round" variant="outline">
                     SEO 기본값으로 초기화
                   </Button>
                   <Button arrow={false} onClick={() => removeDefinition(currentEntry.key)} style="round" variant="secondary">
+=======
+                  <Button size="default" arrow={false} onClick={() => resetSeoEntry(currentEntry.key)} style="round" variant="outline">
+                    SEO 기본값으로 초기화
+                  </Button>
+                  <Button size="default" arrow={false} onClick={() => removeDefinition(currentEntry.key)} style="round" variant="secondary">
+>>>>>>> origin/main
                     SEO 관리 목록에서 제외
                   </Button>
                 </div>
@@ -308,7 +323,11 @@ export default function AdminSeoPage() {
                           {candidate.routePattern || "/"} · {candidate.matchMode}
                         </p>
                       </div>
+<<<<<<< HEAD
                       <Button arrow={false} onClick={() => addDiscoveredDefinition(candidate)} style="round" variant="outline">
+=======
+                      <Button size="default" arrow={false} onClick={() => addDiscoveredDefinition(candidate)} style="round" variant="outline">
+>>>>>>> origin/main
                         추가
                       </Button>
                     </div>
@@ -321,7 +340,11 @@ export default function AdminSeoPage() {
               )}
             </div>
             <div className="flex justify-end">
+<<<<<<< HEAD
               <Button arrow={false} onClick={() => setShowDiscoveryModal(false)} style="round" variant="outline">
+=======
+              <Button size="default" arrow={false} onClick={() => setShowDiscoveryModal(false)} style="round" variant="outline">
+>>>>>>> origin/main
                 닫기
               </Button>
             </div>
