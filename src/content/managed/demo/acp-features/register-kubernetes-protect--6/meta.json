@@ -14,8 +14,8 @@
       "assetRefs": [
         {
           "exists": true,
-          "sourcePath": "public/tutorial/tu-thumb-kac-1.webp",
-          "webPath": "/tutorial/tu-thumb-kac-1.webp"
+          "sourcePath": "public/demo/acp-features/tu-thumb-kac-1.webp",
+          "webPath": "/demo/acp-features/tu-thumb-kac-1.webp"
         }
       ],
       "bodyPath": "src/content/managed/demo/acp-features/register-kubernetes-protect--6/en.mdx",
@@ -25,8 +25,8 @@
       "hideTableOfContents": true,
       "keywords": [],
       "layout": "Article",
-      "ogImage": "/tutorial/tu-thumb-kac-1.webp",
-      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"How to Register the Kubernetes You Need to Protect\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/tutorial/tu-thumb-kac-1.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/5/grant-roles-users\"\n  - \"/features/demo/acp-features/4/connect-kubernetes-agent\"\n  - \"/features/demo/acp-features/7/review-audit-logs\"",
+      "ogImage": "/demo/acp-features/tu-thumb-kac-1.webp",
+      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"How to Register the Kubernetes You Need to Protect\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/demo/acp-features/tu-thumb-kac-1.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/5/grant-roles-users\"\n  - \"/features/demo/acp-features/4/connect-kubernetes-agent\"\n  - \"/features/demo/acp-features/7/review-audit-logs\"",
       "relatedPosts": [
         "/features/demo/acp-features/5/grant-roles-users",
         "/features/demo/acp-features/4/connect-kubernetes-agent",
@@ -40,7 +40,7 @@
         "title": "How to Register the Kubernetes You Need to Protect",
         "description": "",
         "date": "2024-11-29",
-        "ogImage": "public/tutorial/tu-thumb-kac-1.webp",
+        "ogImage": "public/demo/acp-features/tu-thumb-kac-1.webp",
         "hideOgImage": true,
         "hideTableOfContents": true,
         "relatedPosts": [
@@ -54,8 +54,8 @@
       "assetRefs": [
         {
           "exists": true,
-          "sourcePath": "public/tutorial/tu-thumb-kac-1.webp",
-          "webPath": "/tutorial/tu-thumb-kac-1.webp"
+          "sourcePath": "public/demo/acp-features/tu-thumb-kac-1.webp",
+          "webPath": "/demo/acp-features/tu-thumb-kac-1.webp"
         }
       ],
       "bodyPath": "src/content/managed/demo/acp-features/register-kubernetes-protect--6/ko.mdx",
@@ -65,8 +65,8 @@
       "hideTableOfContents": true,
       "keywords": [],
       "layout": "Article",
-      "ogImage": "/tutorial/tu-thumb-kac-1.webp",
-      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"How to Register the Kubernetes You Need to Protect\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/tutorial/tu-thumb-kac-1.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/5/grant-roles-users\"\n  - \"/features/demo/acp-features/4/connect-kubernetes-agent\"\n  - \"/features/demo/acp-features/7/review-audit-logs\"",
+      "ogImage": "/demo/acp-features/tu-thumb-kac-1.webp",
+      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"How to Register the Kubernetes You Need to Protect\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/demo/acp-features/tu-thumb-kac-1.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/5/grant-roles-users\"\n  - \"/features/demo/acp-features/4/connect-kubernetes-agent\"\n  - \"/features/demo/acp-features/7/review-audit-logs\"",
       "relatedPosts": [
         "/features/demo/acp-features/5/grant-roles-users",
         "/features/demo/acp-features/4/connect-kubernetes-agent",
@@ -80,7 +80,7 @@
         "title": "How to Register the Kubernetes You Need to Protect",
         "description": "",
         "date": "2024-11-29",
-        "ogImage": "public/tutorial/tu-thumb-kac-1.webp",
+        "ogImage": "public/demo/acp-features/tu-thumb-kac-1.webp",
         "hideOgImage": true,
         "hideTableOfContents": true,
         "relatedPosts": [
@@ -94,8 +94,8 @@
       "assetRefs": [
         {
           "exists": true,
-          "sourcePath": "public/tutorial/tu-thumb-kac-1.webp",
-          "webPath": "/tutorial/tu-thumb-kac-1.webp"
+          "sourcePath": "public/demo/acp-features/tu-thumb-kac-1.webp",
+          "webPath": "/demo/acp-features/tu-thumb-kac-1.webp"
         }
       ],
       "bodyPath": "src/content/managed/demo/acp-features/register-kubernetes-protect--6/ja.mdx",
@@ -105,8 +105,8 @@
       "hideTableOfContents": true,
       "keywords": [],
       "layout": "Article",
-      "ogImage": "/tutorial/tu-thumb-kac-1.webp",
-      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"How to Register the Kubernetes You Need to Protect\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/tutorial/tu-thumb-kac-1.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/5/grant-roles-users\"\n  - \"/features/demo/acp-features/4/connect-kubernetes-agent\"\n  - \"/features/demo/acp-features/7/review-audit-logs\"",
+      "ogImage": "/demo/acp-features/tu-thumb-kac-1.webp",
+      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"How to Register the Kubernetes You Need to Protect\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/demo/acp-features/tu-thumb-kac-1.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/5/grant-roles-users\"\n  - \"/features/demo/acp-features/4/connect-kubernetes-agent\"\n  - \"/features/demo/acp-features/7/review-audit-logs\"",
       "relatedPosts": [
         "/features/demo/acp-features/5/grant-roles-users",
         "/features/demo/acp-features/4/connect-kubernetes-agent",
@@ -120,7 +120,7 @@
         "title": "How to Register the Kubernetes You Need to Protect",
         "description": "",
         "date": "2024-11-29",
-        "ogImage": "public/tutorial/tu-thumb-kac-1.webp",
+        "ogImage": "public/demo/acp-features/tu-thumb-kac-1.webp",
         "hideOgImage": true,
         "hideTableOfContents": true,
         "relatedPosts": [

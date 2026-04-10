@@ -14,8 +14,8 @@
       "assetRefs": [
         {
           "exists": true,
-          "sourcePath": "public/tutorial/tu-thumb-dac-5.webp",
-          "webPath": "/tutorial/tu-thumb-dac-5.webp"
+          "sourcePath": "public/demo/acp-features/tu-thumb-dac-5.webp",
+          "webPath": "/demo/acp-features/tu-thumb-dac-5.webp"
         }
       ],
       "bodyPath": "src/content/managed/demo/acp-features/apply-data-masking-policies--20/en.mdx",
@@ -25,8 +25,8 @@
       "hideTableOfContents": true,
       "keywords": [],
       "layout": "Article",
-      "ogImage": "/tutorial/tu-thumb-dac-5.webp",
-      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"How to Apply Data Masking Policies\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/tutorial/tu-thumb-dac-5.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/21/apply-data-access-policies\"\n  - \"/features/demo/acp-features/19/submit-db-access-workflow\"\n  - \"/features/demo/acp-features/18/submit-sql-request-workflow\"",
+      "ogImage": "/demo/acp-features/tu-thumb-dac-5.webp",
+      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"How to Apply Data Masking Policies\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/demo/acp-features/tu-thumb-dac-5.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/21/apply-data-access-policies\"\n  - \"/features/demo/acp-features/19/submit-db-access-workflow\"\n  - \"/features/demo/acp-features/18/submit-sql-request-workflow\"",
       "relatedPosts": [
         "/features/demo/acp-features/21/apply-data-access-policies",
         "/features/demo/acp-features/19/submit-db-access-workflow",
@@ -40,7 +40,7 @@
         "title": "How to Apply Data Masking Policies",
         "description": "",
         "date": "2024-11-29",
-        "ogImage": "public/tutorial/tu-thumb-dac-5.webp",
+        "ogImage": "public/demo/acp-features/tu-thumb-dac-5.webp",
         "hideOgImage": true,
         "hideTableOfContents": true,
         "relatedPosts": [
@@ -54,8 +54,8 @@
       "assetRefs": [
         {
           "exists": true,
-          "sourcePath": "public/tutorial/tu-thumb-dac-5.webp",
-          "webPath": "/tutorial/tu-thumb-dac-5.webp"
+          "sourcePath": "public/demo/acp-features/tu-thumb-dac-5.webp",
+          "webPath": "/demo/acp-features/tu-thumb-dac-5.webp"
         }
       ],
       "bodyPath": "src/content/managed/demo/acp-features/apply-data-masking-policies--20/ko.mdx",
@@ -65,8 +65,8 @@
       "hideTableOfContents": true,
       "keywords": [],
       "layout": "Article",
-      "ogImage": "/tutorial/tu-thumb-dac-5.webp",
-      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"데이터 마스킹 정책 설정하기\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/tutorial/tu-thumb-dac-5.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/21/apply-data-access-policies\"\n  - \"/features/demo/acp-features/19/submit-db-access-workflow\"\n  - \"/features/demo/acp-features/18/submit-sql-request-workflow\"",
+      "ogImage": "/demo/acp-features/tu-thumb-dac-5.webp",
+      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"데이터 마스킹 정책 설정하기\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/demo/acp-features/tu-thumb-dac-5.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/21/apply-data-access-policies\"\n  - \"/features/demo/acp-features/19/submit-db-access-workflow\"\n  - \"/features/demo/acp-features/18/submit-sql-request-workflow\"",
       "relatedPosts": [
         "/features/demo/acp-features/21/apply-data-access-policies",
         "/features/demo/acp-features/19/submit-db-access-workflow",
@@ -80,7 +80,7 @@
         "title": "데이터 마스킹 정책 설정하기",
         "description": "",
         "date": "2024-11-29",
-        "ogImage": "public/tutorial/tu-thumb-dac-5.webp",
+        "ogImage": "public/demo/acp-features/tu-thumb-dac-5.webp",
         "hideOgImage": true,
         "hideTableOfContents": true,
         "relatedPosts": [
@@ -94,8 +94,8 @@
       "assetRefs": [
         {
           "exists": true,
-          "sourcePath": "public/tutorial/tu-thumb-dac-5.webp",
-          "webPath": "/tutorial/tu-thumb-dac-5.webp"
+          "sourcePath": "public/demo/acp-features/tu-thumb-dac-5.webp",
+          "webPath": "/demo/acp-features/tu-thumb-dac-5.webp"
         }
       ],
       "bodyPath": "src/content/managed/demo/acp-features/apply-data-masking-policies--20/ja.mdx",
@@ -105,8 +105,8 @@
       "hideTableOfContents": true,
       "keywords": [],
       "layout": "Article",
-      "ogImage": "/tutorial/tu-thumb-dac-5.webp",
-      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"データマスキングポリシーを適用する方法\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/tutorial/tu-thumb-dac-5.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/21/apply-data-access-policies\"\n  - \"/features/demo/acp-features/19/submit-db-access-workflow\"\n  - \"/features/demo/acp-features/18/submit-sql-request-workflow\"",
+      "ogImage": "/demo/acp-features/tu-thumb-dac-5.webp",
+      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"データマスキングポリシーを適用する方法\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/demo/acp-features/tu-thumb-dac-5.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/21/apply-data-access-policies\"\n  - \"/features/demo/acp-features/19/submit-db-access-workflow\"\n  - \"/features/demo/acp-features/18/submit-sql-request-workflow\"",
       "relatedPosts": [
         "/features/demo/acp-features/21/apply-data-access-policies",
         "/features/demo/acp-features/19/submit-db-access-workflow",
@@ -120,7 +120,7 @@
         "title": "データマスキングポリシーを適用する方法",
         "description": "",
         "date": "2024-11-29",
-        "ogImage": "public/tutorial/tu-thumb-dac-5.webp",
+        "ogImage": "public/demo/acp-features/tu-thumb-dac-5.webp",
         "hideOgImage": true,
         "hideTableOfContents": true,
         "relatedPosts": [

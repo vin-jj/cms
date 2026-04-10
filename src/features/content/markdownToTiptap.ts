@@ -1,5 +1,6 @@
 import { splitMarkdownBlocks } from "./markdownBlocks";
 import { highlightCodeToHtml } from "./codeHighlight";
+import { parseMarkdownTable } from "./markdownTable";
 
 type TiptapNode = {
   attrs?: Record<string, unknown>;
@@ -52,6 +53,17 @@ function normalizeContentAssetSrc(src: string) {
 }
 
 function parseMarkdownImage(block: string) {
+  const legacyFigureLabelMatch = block.match(/^!\[\[([^\]]+)\]\s*([^\]]+)\]\(([^)]+)\)$/);
+
+  if (legacyFigureLabelMatch) {
+    const caption = `[${legacyFigureLabelMatch[1]}] ${legacyFigureLabelMatch[2]}`.trim();
+    return {
+      alt: caption,
+      caption,
+      src: normalizeContentAssetSrc(legacyFigureLabelMatch[3]),
+    };
+  }
+
   const legacyBracketMatch = block.match(/^!\[\[(.+)\]\(([^)]+)\)$/);
 
   if (legacyBracketMatch) {
@@ -123,10 +135,24 @@ function createTextNode(
 }
 
 function convertInlineMarkdown(text: string) {
-  const tokens = text.split(/(\[[^\]]+\]\([^)]+\)|\*\*[^*]+\*\*|__[^_]+__|\*[^*]+\*|_[^_]+_|`[^`]+`)/g);
+  const tokens = text.split(/(<a\s+href="[^"]+"[^>]*>.*?<\/a>|\[[^\]]+\]\([^)]+\)|\*\*[^*]+\*\*|__[^_]+__|\*[^*]+\*|_[^_]+_|`[^`]+`)/g);
   const nodes: TiptapNode[] = [];
 
   for (const token of tokens.filter(Boolean)) {
+    if (/^<a\s+href="[^"]+"[^>]*>.*<\/a>$/.test(token)) {
+      const match = token.match(/^<a\s+href="([^"]+)"[^>]*>([\s\S]*)<\/a>$/);
+
+      if (match) {
+        nodes.push(
+          createTextNode(
+            match[2].replace(/<[^>]+>/g, ""),
+            [{ attrs: { href: match[1] }, type: "link" }],
+          ),
+        );
+        continue;
+      }
+    }
+
     if (/^\[[^\]]+\]\([^)]+\)$/.test(token)) {
       const match = token.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
       if (match) {
@@ -199,11 +225,15 @@ function convertMarkdownBlock(block: string): ConvertedBlock {
 
   const imageMatch = parseMarkdownImage(trimmedBlock);
   if (imageMatch) {
+    const figcaption = imageMatch.caption ? `<figcaption>${escapeHtml(imageMatch.caption)}</figcaption>` : "";
     return {
-      html: `<img src="${escapeHtml(imageMatch.src)}" alt="${escapeHtml(imageMatch.alt)}" />`,
+      html: imageMatch.caption
+        ? `<figure data-qp-image="true"><img src="${escapeHtml(imageMatch.src)}" alt="${escapeHtml(imageMatch.alt)}" />${figcaption}</figure>`
+        : `<img src="${escapeHtml(imageMatch.src)}" alt="${escapeHtml(imageMatch.alt)}" />`,
       node: {
         attrs: {
           alt: imageMatch.alt,
+          caption: imageMatch.caption ?? "",
           src: imageMatch.src,
         },
         type: "image",
@@ -284,9 +314,9 @@ function convertMarkdownBlock(block: string): ConvertedBlock {
     };
   }
 
-  if (lines.every((line) => /^-\s+/.test(line))) {
+  if (lines.every((line) => /^\s*[-*]\s+/.test(line))) {
     const items = lines.map((line) => {
-      const content = convertInlineMarkdown(line.replace(/^-\s+/, ""));
+      const content = convertInlineMarkdown(line.replace(/^\s*[-*]\s+/, ""));
       return {
         html: `<li><p>${renderInlineNodesHtml(content)}</p></li>`,
         node: {
@@ -302,19 +332,9 @@ function convertMarkdownBlock(block: string): ConvertedBlock {
     };
   }
 
-  if (
-    lines.length >= 2 &&
-    lines.every((line) => /^\|.*\|$/.test(line.trim())) &&
-    /^\|(\s*:?-{3,}:?\s*\|)+$/.test(lines[1].trim())
-  ) {
-    const rows = lines.map((line) =>
-      line
-        .trim()
-        .slice(1, -1)
-        .split("|")
-        .map((cell) => cell.trim()),
-    );
-    const [headerRow, , ...bodyRows] = rows;
+  const table = parseMarkdownTable(lines);
+  if (table) {
+    const { bodyRows, headerRow } = table;
 
     const headerCells = headerRow.map((cell) => {
       const content = convertInlineMarkdown(cell);

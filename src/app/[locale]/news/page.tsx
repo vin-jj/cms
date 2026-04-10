@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import NewsListClientPage from "../../../components/pages/news/NewsListClientPage";
-import { isLocale } from "../../../constants/i18n";
+import { getLocalePath, isLocale } from "../../../constants/i18n";
 import { formatPublicDate, getContentThumbnailSrc, getLocalizedContent } from "@/features/content/data";
 import { readContentState } from "@/features/content/contentState.server";
 
@@ -23,7 +23,7 @@ export default async function NewsPage({ params }: NewsPageProps) {
     .filter((item) => item.status === "published")
     .map((item) => ({
       date: formatPublicDate(locale, item.dateIso),
-      href: item.contentType === "outlink" ? item.externalUrl : `/${locale}/news/${item.id}`,
+      href: item.contentType === "outlink" ? item.externalUrl : getLocalePath(locale, `/news/${item.id}`),
       imageSrc: getContentThumbnailSrc(item.imageSrc),
       isExternal: item.contentType === "outlink",
       summary: getLocalizedContent(item.summary, locale),

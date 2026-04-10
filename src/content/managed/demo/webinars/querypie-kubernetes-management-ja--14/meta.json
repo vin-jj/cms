@@ -14,8 +14,8 @@
       "assetRefs": [
         {
           "exists": true,
-          "sourcePath": "public/webinar/3dk-ep4-ja.webp",
-          "webPath": "/webinar/3dk-ep4-ja.webp"
+          "sourcePath": "public/demo/webinars/3dk-ep4-ja.webp",
+          "webPath": "/demo/webinars/3dk-ep4-ja.webp"
         }
       ],
       "bodyPath": "src/content/managed/demo/webinars/querypie-kubernetes-management-ja--14/en.mdx",
@@ -25,8 +25,8 @@
       "hideTableOfContents": true,
       "keywords": [],
       "layout": "Article",
-      "ogImage": "/webinar/3dk-ep4-ja.webp",
-      "rawFrontmatter": "layout: \"Article\"\ncategory: \"webinars\"\ntitle: \"エピソード 4 QueryPie KAC: クーバネティスをノックアウト！ - マルチ クーバネティス クラスタ、クーバネティス リソース、Podアクセス履歴\"\ndescription: \"エピソード 4では、QueryPie のクーバネティスアクセス制御ソリューションである “QueryPie KAC (Kubernetes Access Controller)” を活用して、クーバネティス環境でも堅固なセキュリティ環境を維持する方法について掘り下げてみました。\"\ndate: \"2024-11-29\"\nogImage: \"public/webinar/3dk-ep4-ja.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/webinars/10/querypie-databases-nosql-ledger-ja\"\n  - \"/features/demo/webinars/12/querypie-server-management-ja\"\n  - \"/features/demo/webinars/8/querypie-integrations-scim-slack-vault-ja\"",
+      "ogImage": "/demo/webinars/3dk-ep4-ja.webp",
+      "rawFrontmatter": "layout: \"Article\"\ncategory: \"webinars\"\ntitle: \"エピソード 4 QueryPie KAC: クーバネティスをノックアウト！ - マルチ クーバネティス クラスタ、クーバネティス リソース、Podアクセス履歴\"\ndescription: \"エピソード 4では、QueryPie のクーバネティスアクセス制御ソリューションである “QueryPie KAC (Kubernetes Access Controller)” を活用して、クーバネティス環境でも堅固なセキュリティ環境を維持する方法について掘り下げてみました。\"\ndate: \"2024-11-29\"\nogImage: \"public/demo/webinars/3dk-ep4-ja.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/webinars/10/querypie-databases-nosql-ledger-ja\"\n  - \"/features/demo/webinars/12/querypie-server-management-ja\"\n  - \"/features/demo/webinars/8/querypie-integrations-scim-slack-vault-ja\"",
       "relatedPosts": [
         "/features/demo/webinars/10/querypie-databases-nosql-ledger-ja",
         "/features/demo/webinars/12/querypie-server-management-ja",
@@ -40,7 +40,7 @@
         "title": "エピソード 4 QueryPie KAC: クーバネティスをノックアウト！ - マルチ クーバネティス クラスタ、クーバネティス リソース、Podアクセス履歴",
         "description": "エピソード 4では、QueryPie のクーバネティスアクセス制御ソリューションである “QueryPie KAC (Kubernetes Access Controller)” を活用して、クーバネティス環境でも堅固なセキュリティ環境を維持する方法について掘り下げてみました。",
         "date": "2024-11-29",
-        "ogImage": "public/webinar/3dk-ep4-ja.webp",
+        "ogImage": "public/demo/webinars/3dk-ep4-ja.webp",
         "hideOgImage": true,
         "hideTableOfContents": true,
         "relatedPosts": [
@@ -54,8 +54,8 @@
       "assetRefs": [
         {
           "exists": true,
-          "sourcePath": "public/webinar/3dk-ep4-ja.webp",
-          "webPath": "/webinar/3dk-ep4-ja.webp"
+          "sourcePath": "public/demo/webinars/3dk-ep4-ja.webp",
+          "webPath": "/demo/webinars/3dk-ep4-ja.webp"
         }
       ],
       "bodyPath": "src/content/managed/demo/webinars/querypie-kubernetes-management-ja--14/ja.mdx",
@@ -65,8 +65,8 @@
       "hideTableOfContents": true,
       "keywords": [],
       "layout": "Article",
-      "ogImage": "/webinar/3dk-ep4-ja.webp",
-      "rawFrontmatter": "layout: \"Article\"\ncategory: \"webinars\"\ntitle: \"エピソード 4 QueryPie KAC: クーバネティスをノックアウト！ - マルチ クーバネティス クラスタ、クーバネティス リソース、Podアクセス履歴\"\ndescription: \"エピソード 4では、QueryPie のクーバネティスアクセス制御ソリューションである “QueryPie KAC (Kubernetes Access Controller)” を活用して、クーバネティス環境でも堅固なセキュリティ環境を維持する方法について掘り下げてみました。\"\ndate: \"2024-11-29\"\nogImage: \"public/webinar/3dk-ep4-ja.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/webinars/10/querypie-databases-nosql-ledger-ja\"\n  - \"/features/demo/webinars/12/querypie-server-management-ja\"\n  - \"/features/demo/webinars/8/querypie-integrations-scim-slack-vault-ja\"",
+      "ogImage": "/demo/webinars/3dk-ep4-ja.webp",
+      "rawFrontmatter": "layout: \"Article\"\ncategory: \"webinars\"\ntitle: \"エピソード 4 QueryPie KAC: クーバネティスをノックアウト！ - マルチ クーバネティス クラスタ、クーバネティス リソース、Podアクセス履歴\"\ndescription: \"エピソード 4では、QueryPie のクーバネティスアクセス制御ソリューションである “QueryPie KAC (Kubernetes Access Controller)” を活用して、クーバネティス環境でも堅固なセキュリティ環境を維持する方法について掘り下げてみました。\"\ndate: \"2024-11-29\"\nogImage: \"public/demo/webinars/3dk-ep4-ja.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/webinars/10/querypie-databases-nosql-ledger-ja\"\n  - \"/features/demo/webinars/12/querypie-server-management-ja\"\n  - \"/features/demo/webinars/8/querypie-integrations-scim-slack-vault-ja\"",
       "relatedPosts": [
         "/features/demo/webinars/10/querypie-databases-nosql-ledger-ja",
         "/features/demo/webinars/12/querypie-server-management-ja",
@@ -80,7 +80,7 @@
         "title": "エピソード 4 QueryPie KAC: クーバネティスをノックアウト！ - マルチ クーバネティス クラスタ、クーバネティス リソース、Podアクセス履歴",
         "description": "エピソード 4では、QueryPie のクーバネティスアクセス制御ソリューションである “QueryPie KAC (Kubernetes Access Controller)” を活用して、クーバネティス環境でも堅固なセキュリティ環境を維持する方法について掘り下げてみました。",
         "date": "2024-11-29",
-        "ogImage": "public/webinar/3dk-ep4-ja.webp",
+        "ogImage": "public/demo/webinars/3dk-ep4-ja.webp",
         "hideOgImage": true,
         "hideTableOfContents": true,
         "relatedPosts": [

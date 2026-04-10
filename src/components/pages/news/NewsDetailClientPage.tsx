@@ -1,8 +1,8 @@
 "use client";
 
 import NewsDetailPage from "./NewsDetailPage";
-import type { Locale } from "@/constants/i18n";
-import type { DocsDetailPageProps } from "../docs/DocsDetailPage";
+import { getLocalePath, type Locale } from "@/constants/i18n";
+import type { DocsDetailPageProps } from "../documentation/DocumentationDetailPage";
 import { useManagedContents } from "@/features/content/clientStore";
 import { formatPublicDate, getContentThumbnailSrc, getLocalizedContent, getWriterLabel, type ManagedContentEntry } from "@/features/content/data";
 import useHydrated from "@/hooks/useHydrated";
@@ -21,7 +21,8 @@ export default function NewsDetailClientPage({
   slug,
 }: NewsDetailClientPageProps) {
   const decodedSlug = decodeURIComponent(slug);
-  const items = useManagedContents("news", initialItems).filter((item) => item.status === "published");
+  const managedItems = useManagedContents("news", initialItems) ?? [];
+  const items = managedItems.filter((item) => item.status === "published");
   const isHydrated = useHydrated();
 
   const currentIndex = items.findIndex((item) => item.id === decodedSlug);
@@ -40,7 +41,7 @@ export default function NewsDetailClientPage({
           category: "Previous Post",
           href: previousItem.contentType === "outlink"
             ? previousItem.externalUrl
-            : `/${locale}/news/${previousItem.id}`,
+            : getLocalePath(locale, `/news/${previousItem.id}`),
           imageSrc: getContentThumbnailSrc(previousItem.imageSrc),
           title: getLocalizedContent(previousItem.title, locale),
         }
@@ -50,7 +51,7 @@ export default function NewsDetailClientPage({
           category: "Next post",
           href: nextItem.contentType === "outlink"
             ? nextItem.externalUrl
-            : `/${locale}/news/${nextItem.id}`,
+            : getLocalePath(locale, `/news/${nextItem.id}`),
           imageSrc: getContentThumbnailSrc(nextItem.imageSrc),
           title: getLocalizedContent(nextItem.title, locale),
         }

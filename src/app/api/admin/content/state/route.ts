@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import {
   deleteAuthoredContent,
+  regenerateAuthoredContentSeed,
   saveAuthoredContent,
   updateAuthoredContentMeta,
 } from "@/features/content/authored.server";
@@ -36,6 +37,14 @@ function parseSection(url: string) {
   return section as ManagedContentSection | null;
 }
 
+function isPersistedAuthoredItem(item: ManagedContentEntry) {
+  return item.contentFormat === "tiptap" || item.contentType === "outlink" || item.section === "news";
+}
+
+function isSameItem(left: ManagedContentEntry | undefined, right: ManagedContentEntry) {
+  return left ? JSON.stringify(left) === JSON.stringify(right) : false;
+}
+
 export async function GET(request: Request) {
   const section = parseSection(request.url) ?? undefined;
   const items = await readContentState(section);
@@ -43,44 +52,66 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  const payload = (await request.json()) as ReplaceStateRequest;
+  try {
+    const payload = (await request.json()) as ReplaceStateRequest;
 
-  if (!payload.items || !Array.isArray(payload.items)) {
-    return NextResponse.json({ error: "items is required" }, { status: 400 });
-  }
-
-  const currentItems = await readContentState();
-  const currentMap = new Map(currentItems.map((item) => [item.id, item]));
-  const payloadSections = new Set(payload.items.map((item) => item.section));
-  const nextItems: ManagedContentEntry[] = [];
-
-  for (const item of payload.items) {
-    if (item.contentFormat === "tiptap" || item.contentType === "outlink" || item.section === "news") {
-      const currentItem = currentMap.get(item.id);
-      const savedItem =
-        item.storageId || currentItem?.storageId
-          ? await saveAuthoredContent({
-              ...item,
-              storageId: item.storageId ?? currentItem?.storageId,
-            })
-          : await saveAuthoredContent(item);
-      nextItems.push(savedItem);
-      continue;
+    if (!payload.items || !Array.isArray(payload.items)) {
+      return NextResponse.json({ error: "items is required" }, { status: 400 });
     }
 
-    nextItems.push(item);
+    const currentItems = await readContentState();
+    const currentMap = new Map(currentItems.map((item) => [item.id, item]));
+    const payloadSections = new Set(payload.items.map((item) => item.section));
+    const nextItems: ManagedContentEntry[] = [];
+    let shouldRegenerateAuthoredSeed = false;
+
+    for (const item of payload.items) {
+      if (isPersistedAuthoredItem(item)) {
+        const currentItem = currentMap.get(item.id);
+
+        if (isSameItem(currentItem, item)) {
+          nextItems.push(item);
+          continue;
+        }
+
+        const savedItem = await saveAuthoredContent(
+          item.storageId || currentItem?.storageId
+            ? {
+                ...item,
+                storageId: item.storageId ?? currentItem?.storageId,
+              }
+            : item,
+          { regenerateSeed: false },
+        );
+
+        shouldRegenerateAuthoredSeed = true;
+        nextItems.push(savedItem);
+        continue;
+      }
+
+      nextItems.push(item);
+    }
+
+    const itemsToPersist =
+      payloadSections.size === 1
+        ? [
+            ...nextItems,
+            ...currentItems.filter((item) => !payloadSections.has(item.section)),
+          ]
+        : nextItems;
+
+    if (shouldRegenerateAuthoredSeed) {
+      await regenerateAuthoredContentSeed();
+    }
+
+    const items = await replaceContentState(itemsToPersist);
+    return NextResponse.json({ items });
+  } catch (error) {
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "Failed to persist content state." },
+      { status: 500 },
+    );
   }
-
-  const itemsToPersist =
-    payloadSections.size === 1
-      ? [
-          ...nextItems,
-          ...currentItems.filter((item) => !payloadSections.has(item.section)),
-        ]
-      : nextItems;
-
-  const items = await replaceContentState(itemsToPersist);
-  return NextResponse.json({ items });
 }
 
 export async function PUT(request: Request) {
@@ -92,7 +123,7 @@ export async function PUT(request: Request) {
   }
 
   const savedItem =
-    item.contentFormat === "tiptap" || item.contentType === "outlink" || item.section === "news"
+    isPersistedAuthoredItem(item)
       ? await saveAuthoredContent(item)
       : item;
 

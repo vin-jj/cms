@@ -8,8 +8,8 @@ export type DemoListItem = {
 export const demoItems: DemoListItem[] = [
   {
     category: "Demo",
-    href: "/en/demo",
-    imageSrc: "/uploads/article-01.png",
+    href: "/features/demo",
+    imageSrc: "/images/common/fallback-contents.jpg",
     title: "Sample demo item",
   },
 ];

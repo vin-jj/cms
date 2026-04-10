@@ -14,8 +14,8 @@
       "assetRefs": [
         {
           "exists": true,
-          "sourcePath": "public/tutorial/tu-thumb-sac-7.webp",
-          "webPath": "/tutorial/tu-thumb-sac-7.webp"
+          "sourcePath": "public/demo/acp-features/tu-thumb-sac-7.webp",
+          "webPath": "/demo/acp-features/tu-thumb-sac-7.webp"
         }
       ],
       "bodyPath": "src/content/managed/demo/acp-features/connect-servers-agent--8/en.mdx",
@@ -25,8 +25,8 @@
       "hideTableOfContents": true,
       "keywords": [],
       "layout": "Article",
-      "ogImage": "/tutorial/tu-thumb-sac-7.webp",
-      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"How to Connect to Servers via the QueryPie Agent\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/tutorial/tu-thumb-sac-7.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/10/submit-server-access-workflow\"\n  - \"/features/demo/acp-features/9/submit-role-access-workflow\"\n  - \"/features/demo/acp-features/7/review-audit-logs\"",
+      "ogImage": "/demo/acp-features/tu-thumb-sac-7.webp",
+      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"How to Connect to Servers via the QueryPie Agent\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/demo/acp-features/tu-thumb-sac-7.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/10/submit-server-access-workflow\"\n  - \"/features/demo/acp-features/9/submit-role-access-workflow\"\n  - \"/features/demo/acp-features/7/review-audit-logs\"",
       "relatedPosts": [
         "/features/demo/acp-features/10/submit-server-access-workflow",
         "/features/demo/acp-features/9/submit-role-access-workflow",
@@ -40,7 +40,7 @@
         "title": "How to Connect to Servers via the QueryPie Agent",
         "description": "",
         "date": "2024-11-29",
-        "ogImage": "public/tutorial/tu-thumb-sac-7.webp",
+        "ogImage": "public/demo/acp-features/tu-thumb-sac-7.webp",
         "hideOgImage": true,
         "hideTableOfContents": true,
         "relatedPosts": [
@@ -54,8 +54,8 @@
       "assetRefs": [
         {
           "exists": true,
-          "sourcePath": "public/tutorial/tu-thumb-sac-7.webp",
-          "webPath": "/tutorial/tu-thumb-sac-7.webp"
+          "sourcePath": "public/demo/acp-features/tu-thumb-sac-7.webp",
+          "webPath": "/demo/acp-features/tu-thumb-sac-7.webp"
         }
       ],
       "bodyPath": "src/content/managed/demo/acp-features/connect-servers-agent--8/ko.mdx",
@@ -65,8 +65,8 @@
       "hideTableOfContents": true,
       "keywords": [],
       "layout": "Article",
-      "ogImage": "/tutorial/tu-thumb-sac-7.webp",
-      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"에이전트를 통해 서버 접속하기\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/tutorial/tu-thumb-sac-7.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/10/submit-server-access-workflow\"\n  - \"/features/demo/acp-features/9/submit-role-access-workflow\"\n  - \"/features/demo/acp-features/7/review-audit-logs\"",
+      "ogImage": "/demo/acp-features/tu-thumb-sac-7.webp",
+      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"에이전트를 통해 서버 접속하기\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/demo/acp-features/tu-thumb-sac-7.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/10/submit-server-access-workflow\"\n  - \"/features/demo/acp-features/9/submit-role-access-workflow\"\n  - \"/features/demo/acp-features/7/review-audit-logs\"",
       "relatedPosts": [
         "/features/demo/acp-features/10/submit-server-access-workflow",
         "/features/demo/acp-features/9/submit-role-access-workflow",
@@ -80,7 +80,7 @@
         "title": "에이전트를 통해 서버 접속하기",
         "description": "",
         "date": "2024-11-29",
-        "ogImage": "public/tutorial/tu-thumb-sac-7.webp",
+        "ogImage": "public/demo/acp-features/tu-thumb-sac-7.webp",
         "hideOgImage": true,
         "hideTableOfContents": true,
         "relatedPosts": [
@@ -94,8 +94,8 @@
       "assetRefs": [
         {
           "exists": true,
-          "sourcePath": "public/tutorial/tu-thumb-sac-7.webp",
-          "webPath": "/tutorial/tu-thumb-sac-7.webp"
+          "sourcePath": "public/demo/acp-features/tu-thumb-sac-7.webp",
+          "webPath": "/demo/acp-features/tu-thumb-sac-7.webp"
         }
       ],
       "bodyPath": "src/content/managed/demo/acp-features/connect-servers-agent--8/ja.mdx",
@@ -105,8 +105,8 @@
       "hideTableOfContents": true,
       "keywords": [],
       "layout": "Article",
-      "ogImage": "/tutorial/tu-thumb-sac-7.webp",
-      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"QueryPieエージェントを使用してサーバーに接続する方法\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/tutorial/tu-thumb-sac-7.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/10/submit-server-access-workflow\"\n  - \"/features/demo/acp-features/9/submit-role-access-workflow\"\n  - \"/features/demo/acp-features/7/review-audit-logs\"",
+      "ogImage": "/demo/acp-features/tu-thumb-sac-7.webp",
+      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"QueryPieエージェントを使用してサーバーに接続する方法\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/demo/acp-features/tu-thumb-sac-7.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/10/submit-server-access-workflow\"\n  - \"/features/demo/acp-features/9/submit-role-access-workflow\"\n  - \"/features/demo/acp-features/7/review-audit-logs\"",
       "relatedPosts": [
         "/features/demo/acp-features/10/submit-server-access-workflow",
         "/features/demo/acp-features/9/submit-role-access-workflow",
@@ -120,7 +120,7 @@
         "title": "QueryPieエージェントを使用してサーバーに接続する方法",
         "description": "",
         "date": "2024-11-29",
-        "ogImage": "public/tutorial/tu-thumb-sac-7.webp",
+        "ogImage": "public/demo/acp-features/tu-thumb-sac-7.webp",
         "hideOgImage": true,
         "hideTableOfContents": true,
         "relatedPosts": [

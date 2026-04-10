@@ -3,6 +3,10 @@
 import { useMemo, useRef, useState } from "react";
 import AdminHeader from "../../layout/admin/AdminHeader";
 import Button from "../../common/Button";
+import Input from "../../common/Input";
+import LoadingText from "../../common/LoadingText";
+import TabGroup from "../../common/TabGroup";
+import Textarea from "../../common/Textarea";
 import Tab from "../../common/Tab";
 import {
   persistSeoPageDefinitions,
@@ -151,7 +155,7 @@ export default function AdminSeoPage() {
               style="round"
               variant="outline"
             >
-              {isDiscovering ? "탐색 중..." : "미등록 페이지 탐색"}
+              {isDiscovering ? <LoadingText text="탐색 중..." /> : "미등록 페이지 탐색"}
             </Button>
           </div>
         </div>
@@ -163,22 +167,20 @@ export default function AdminSeoPage() {
                 <h2 className="m-0 type-h3 text-fg">{currentDefinition?.label}</h2>
                 <p className="m-0 mt-2 type-body-md text-mute-fg">{currentDefinition?.description}</p>
               </div>
-              <div className="rounded-full bg-bg-deep p-1">
-                <div className="flex items-center rounded-full">
-                  {(["en", "ko", "ja"] as const).map((locale) => (
-                    <Tab key={locale} onClick={() => setActiveLocale(locale)} state={activeLocale === locale ? "on" : "off"}>
-                      {locale.toUpperCase()}
-                    </Tab>
-                  ))}
-                </div>
-              </div>
+              <TabGroup>
+                {(["en", "ko", "ja"] as const).map((locale) => (
+                  <Tab key={locale} onClick={() => setActiveLocale(locale)} state={activeLocale === locale ? "on" : "off"}>
+                    {locale.toUpperCase()}
+                  </Tab>
+                ))}
+              </TabGroup>
             </div>
 
             <div className="grid gap-5">
               <label className="flex flex-col gap-[10px]">
                 <span className="type-body-md text-fg">Meta Title</span>
-                <input
-                  className="ui-field h-11 rounded-button bg-bg px-3 type-body-md text-fg outline-none"
+                <Input
+                  className="w-full bg-bg"
                   onChange={(event) =>
                     updateEntry({ title: { [activeLocale]: event.target.value } as SeoEntry["title"] })
                   }
@@ -188,8 +190,8 @@ export default function AdminSeoPage() {
 
               <label className="flex flex-col gap-[10px]">
                 <span className="type-body-md text-fg">Meta Description</span>
-                <textarea
-                  className="ui-field min-h-[120px] resize-y rounded-button bg-bg px-4 py-4 type-body-md text-fg outline-none"
+                <Textarea
+                  className="min-h-[120px] resize-y bg-bg"
                   onChange={(event) =>
                     updateEntry({
                       description: { [activeLocale]: event.target.value } as SeoEntry["description"],
@@ -202,8 +204,8 @@ export default function AdminSeoPage() {
               <div className="grid gap-5 md:grid-cols-2">
                 <label className="flex flex-col gap-[10px]">
                   <span className="type-body-md text-fg">OG Title</span>
-                  <input
-                    className="ui-field h-11 rounded-button bg-bg px-3 type-body-md text-fg outline-none"
+                  <Input
+                    className="w-full bg-bg"
                     onChange={(event) =>
                       updateEntry({ ogTitle: { [activeLocale]: event.target.value } as SeoEntry["ogTitle"] })
                     }
@@ -214,12 +216,12 @@ export default function AdminSeoPage() {
                 <div className="flex flex-col gap-[10px]">
                   <span className="type-body-md text-fg">OG Image</span>
                   <div className="flex flex-col gap-3 sm:flex-row">
-                    <div className="flex min-w-0 h-11 flex-1 items-center rounded-button border border-transparent bg-bg px-3">
+                    <div className="flex min-w-0 h-10 flex-1 items-center rounded-button border border-transparent bg-bg px-3">
                       <span className="truncate type-body-md text-mute-fg">
                         {ogImageDisplayValue}
                       </span>
                     </div>
-                    <Button size="default" arrow={false} className="w-full justify-center sm:w-auto" onClick={() => fileInputRef.current?.click()} style="round" variant="outline">
+                    <Button arrow={false} className="w-full justify-center sm:w-auto" onClick={() => fileInputRef.current?.click()} style="round" variant="outline">
                       추가
                     </Button>
                   </div>
@@ -235,8 +237,8 @@ export default function AdminSeoPage() {
 
               <label className="flex flex-col gap-[10px]">
                 <span className="type-body-md text-fg">OG Description</span>
-                <textarea
-                  className="ui-field min-h-[120px] resize-y rounded-button bg-bg px-4 py-4 type-body-md text-fg outline-none"
+                <Textarea
+                  className="min-h-[120px] resize-y bg-bg"
                   onChange={(event) =>
                     updateEntry({
                       ogDescription: { [activeLocale]: event.target.value } as SeoEntry["ogDescription"],
@@ -269,10 +271,10 @@ export default function AdminSeoPage() {
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <p className="m-0 type-body-sm text-mute-fg">실시간 적용</p>
                 <div className="flex flex-col gap-3 sm:flex-row">
-                  <Button size="default" arrow={false} onClick={() => resetSeoEntry(currentEntry.key)} style="round" variant="outline">
+                  <Button arrow={false} onClick={() => resetSeoEntry(currentEntry.key)} style="round" variant="outline">
                     SEO 기본값으로 초기화
                   </Button>
-                  <Button size="default" arrow={false} onClick={() => removeDefinition(currentEntry.key)} style="round" variant="secondary">
+                  <Button arrow={false} onClick={() => removeDefinition(currentEntry.key)} style="round" variant="secondary">
                     SEO 관리 목록에서 제외
                   </Button>
                 </div>
@@ -283,9 +285,9 @@ export default function AdminSeoPage() {
       </div>
 
       {showDiscoveryModal ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(8,9,10,0.6)] px-4 sm:px-5">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[rgb(var(--color-overlay-rgb)/0.6)] px-4 sm:px-5">
           <div
-            className="flex w-full max-w-[520px] flex-col gap-4 rounded-[20px] border border-border bg-bg-content p-5 md:p-6"
+            className="flex w-full max-w-[520px] flex-col gap-4 rounded-modal border border-border bg-[var(--color-bg-modal)] p-5 md:p-6"
             onClick={(event) => event.stopPropagation()}
           >
             <div>
@@ -298,7 +300,7 @@ export default function AdminSeoPage() {
             <div className="flex max-h-[360px] flex-col gap-2 overflow-auto">
               {discoveryCandidates.length > 0 ? (
                 discoveryCandidates.map((candidate) => (
-                  <div key={`${candidate.routePattern}-${candidate.matchMode}`} className="rounded-button bg-bg px-4 py-3">
+                  <div key={`${candidate.routePattern}-${candidate.matchMode}`} className="rounded-button bg-bg-content px-4 py-3">
                     <div className="flex items-start justify-between gap-4">
                       <div>
                         <p className="m-0 type-body-md text-fg">{candidate.label}</p>
@@ -306,7 +308,7 @@ export default function AdminSeoPage() {
                           {candidate.routePattern || "/"} · {candidate.matchMode}
                         </p>
                       </div>
-                      <Button size="default" arrow={false} onClick={() => addDiscoveredDefinition(candidate)} style="round" variant="outline">
+                      <Button arrow={false} onClick={() => addDiscoveredDefinition(candidate)} style="round" variant="outline">
                         추가
                       </Button>
                     </div>
@@ -319,7 +321,7 @@ export default function AdminSeoPage() {
               )}
             </div>
             <div className="flex justify-end">
-              <Button size="default" arrow={false} onClick={() => setShowDiscoveryModal(false)} style="round" variant="outline">
+              <Button arrow={false} onClick={() => setShowDiscoveryModal(false)} style="round" variant="outline">
                 닫기
               </Button>
             </div>

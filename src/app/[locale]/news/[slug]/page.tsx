@@ -1,7 +1,7 @@
 import { notFound, redirect } from "next/navigation";
-import { isLocale } from "../../../../constants/i18n";
+import { getLocalePath, isLocale } from "../../../../constants/i18n";
 import NewsDetailClientPage from "../../../../components/pages/news/NewsDetailClientPage";
-import type { DocsDetailPageProps } from "../../../../components/pages/docs/DocsDetailPage";
+import type { DocsDetailPageProps } from "../../../../components/pages/documentation/DocumentationDetailPage";
 import { formatPublicDate, getContentThumbnailSrc, getLocalizedContent } from "@/features/content/data";
 import { readContentState } from "@/features/content/contentState.server";
 
@@ -36,7 +36,7 @@ export default async function NewsDetailRoute({ params }: NewsDetailRouteProps) 
           category: "Previous Post",
           href: previousItem.contentType === "outlink"
             ? previousItem.externalUrl
-            : `/${locale}/news/${previousItem.id}`,
+            : getLocalePath(locale, `/news/${previousItem.id}`),
           imageSrc: getContentThumbnailSrc(previousItem.imageSrc),
           title: getLocalizedContent(previousItem.title, locale),
         }
@@ -46,7 +46,7 @@ export default async function NewsDetailRoute({ params }: NewsDetailRouteProps) 
           category: "Next post",
           href: nextItem.contentType === "outlink"
             ? nextItem.externalUrl
-            : `/${locale}/news/${nextItem.id}`,
+            : getLocalePath(locale, `/news/${nextItem.id}`),
           imageSrc: getContentThumbnailSrc(nextItem.imageSrc),
           title: getLocalizedContent(nextItem.title, locale),
         }
@@ -56,7 +56,7 @@ export default async function NewsDetailRoute({ params }: NewsDetailRouteProps) 
   return (
     <NewsDetailClientPage
       fallbackProps={{
-        docsHref: `/${locale}/news`,
+        docsHref: getLocalePath(locale, "/company/news"),
         slug: decodedSlug,
         bodyHtml: getLocalizedContent(currentEntry.bodyHtml, locale),
         bodyMarkdown: getLocalizedContent(currentEntry.bodyMarkdown, locale),

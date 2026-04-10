@@ -107,8 +107,6 @@ export default function FeatureSection({
               "flex flex-col items-start gap-5 md:flex-row md:gap-[60px]",
               item.reverse && "md:flex-row-reverse",
             )}
-            data-reveal
-            style={{ transitionDelay: `${index * 90}ms` }}
           >
             <FeatureImage imageAlt={item.imageAlt} imageSrc={item.imageSrc} />
             <FeatureCopy body={item.body} title={item.title} />

@@ -7,7 +7,7 @@
   "totalLocaleFiles": 358,
   "entries": [
     {
-      "category": "introduction-decks",
+      "category": "introduction",
       "contentKind": "gated-download",
       "entryId": "acp-introduction-download",
       "locales": [
@@ -15,10 +15,10 @@
         "ko",
         "ja"
       ],
-      "metaPath": "src/content/managed/documentation/introduction-decks/acp-introduction-download/meta.json",
+      "metaPath": "src/content/managed/documentation/introduction/acp-introduction-download/meta.json",
       "section": "documentation",
       "slug": "acp-introduction-download",
-      "sourceUrl": "/features/documentation/introduction-decks/acp-introduction-download"
+      "sourceUrl": "/features/documentation/introduction/acp-introduction-download"
     },
     {
       "category": "blogs",
@@ -169,7 +169,7 @@
       "sourceUrl": "/features/documentation/white-paper/25/ai-tranformation-japan/download"
     },
     {
-      "category": "introduction-decks",
+      "category": "introduction",
       "contentKind": "gated-download",
       "entryId": "aip-introduction-download",
       "locales": [
@@ -177,10 +177,10 @@
         "ko",
         "ja"
       ],
-      "metaPath": "src/content/managed/documentation/introduction-decks/aip-introduction-download/meta.json",
+      "metaPath": "src/content/managed/documentation/introduction/aip-introduction-download/meta.json",
       "section": "documentation",
       "slug": "aip-introduction-download",
-      "sourceUrl": "/features/documentation/introduction-decks/aip-introduction-download"
+      "sourceUrl": "/features/documentation/introduction/aip-introduction-download"
     },
     {
       "category": "use-cases",

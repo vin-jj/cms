@@ -1,6 +1,6 @@
-import type { Locale } from "@/constants/i18n";
+import { getLocalePath, type Locale } from "@/constants/i18n";
 import demoContentSeed from "../../content/demo/content-seed.json";
-import docsContentSeed from "../../content/docs/content-seed.json";
+import docsContentSeed from "../../content/documentation/content-seed.json";
 import newsAuthoredContentSeed from "../../content/news/content-seed.json";
 import managedContentSeed from "../../content/managed/content-seed.json";
 import {
@@ -15,6 +15,7 @@ export type ManagedContentSection = "demo" | "documentation" | "news";
 export type ManagedContentStatus = "hidden" | "published";
 export type ManagedContentCategorySlug = Exclude<DemoCategorySlug | DocsCategorySlug, "all"> | NewsCategorySlug;
 export type ManagedContentType = "content" | "outlink";
+export type WhitePaperGatingLevel = "none" | "10" | "30" | "50";
 export type LocalizedContent = Record<Locale, string>;
 
 export type ManagedContentEntry = {
@@ -27,7 +28,12 @@ export type ManagedContentEntry = {
   contentFormat: "markdown" | "tiptap";
   contentType: ManagedContentType;
   dateIso: string;
+  downloadCoverImageSrc: string;
+  downloadPdfFileName: string;
+  downloadPdfSrc: string;
+  enableDownloadButton: boolean;
   externalUrl: string;
+  gatingLevel: WhitePaperGatingLevel;
   hideHeroImage: boolean;
   id: string;
   imageSrc: string;
@@ -43,6 +49,8 @@ export type ManagedContentEntry = {
 export const MANAGED_CONTENT_STORAGE_KEY = "querypie-admin-managed-content";
 export const MANAGED_CONTENT_STORE_EVENT = "querypie:managed-content:changed";
 export const LEGACY_USE_CASE_STORAGE_KEY = "querypie-admin-use-cases";
+export const WHITE_PAPER_DOWNLOAD_BUTTON_LABEL = "Download This White Paper";
+export const WHITE_PAPER_UNLOCK_BUTTON_LABEL = "Unlock White Paper";
 
 type LegacyUseCaseSeed = {
   authorName: string;
@@ -83,7 +91,7 @@ const initialUseCaseSeeds: LegacyUseCaseSeed[] = [
     categorySlug: "use-cases",
     dateIso: "2026-03-15",
     id: "seo-analysis",
-    imageSrc: "/uploads/article-01.png",
+    imageSrc: "/images/common/fallback-contents.jpg",
     status: "published",
     title:
       "SEO analysis, once considered the domain of specialists, can now be handled by an AIP agent.",
@@ -107,7 +115,7 @@ const initialUseCaseSeeds: LegacyUseCaseSeed[] = [
     categorySlug: "use-cases",
     dateIso: "2026-03-12",
     id: "guardrail-design",
-    imageSrc: "/uploads/article-02.png",
+    imageSrc: "/images/common/fallback-contents.jpg",
     status: "published",
     title:
       "Guardrail Design in the AI Agent Era (2026 Edition) — Part 1: Philosophy & Design",
@@ -119,7 +127,7 @@ const initialUseCaseSeeds: LegacyUseCaseSeed[] = [
     categorySlug: "use-cases",
     dateIso: "2026-03-08",
     id: "ai-security-map",
-    imageSrc: "/uploads/article-03.png",
+    imageSrc: "/images/common/fallback-contents.jpg",
     status: "hidden",
     title:
       "AI Security Threat Map 2026 | 7 Attack Vectors and Practical Defense Framework for CxOs",
@@ -131,7 +139,7 @@ const initialUseCaseSeeds: LegacyUseCaseSeed[] = [
     categorySlug: "use-cases",
     dateIso: "2026-03-05",
     id: "workflow-blueprint",
-    imageSrc: "/uploads/article-01.png",
+    imageSrc: "/images/common/fallback-contents.jpg",
     status: "published",
     title:
       "Operational AI readiness checklist for teams moving from prototype to production.",
@@ -158,7 +166,12 @@ export function createEmptyManagedContentDraft(
     contentFormat: section === "news" ? "markdown" : "tiptap",
     contentType: section === "news" ? "outlink" : "content",
     dateIso: getTodayIsoDate(),
+    downloadCoverImageSrc: "",
+    downloadPdfFileName: "",
+    downloadPdfSrc: "",
+    enableDownloadButton: false,
     externalUrl: "",
+    gatingLevel: "none",
     hideHeroImage: false,
     id: "new",
     imageSrc: "",
@@ -219,6 +232,10 @@ export function slugifyTitle(title: string) {
     .replace(/^-|-$/g, "");
 
   return normalized || `content-${Date.now()}`;
+}
+
+export function getLegacyBaseSlug(id: string) {
+  return id.replace(/--\d+$/, "");
 }
 
 export function ensureUniqueSlug(id: string, items: ManagedContentEntry[], currentId?: string) {
@@ -285,6 +302,23 @@ export function getWriterLabel(item: Pick<ManagedContentEntry, "authorName" | "a
     : item.authorName.trim();
 }
 
+export function getWhitePaperDownloadPreviewProps(
+  item: Pick<
+    ManagedContentEntry,
+    "categorySlug" | "downloadPdfSrc" | "enableDownloadButton" | "section"
+  >,
+) {
+  const shouldShow =
+    item.section === "documentation" &&
+    item.categorySlug === "white-papers" &&
+    item.enableDownloadButton;
+
+  return {
+    downloadHref: shouldShow ? item.downloadPdfSrc || "#" : undefined,
+    downloadLabel: WHITE_PAPER_DOWNLOAD_BUTTON_LABEL,
+  };
+}
+
 export function getManagedCategoryLabel(
   section: ManagedContentSection,
   categorySlug: ManagedContentCategorySlug,
@@ -320,9 +354,9 @@ export function getAdminDetailHref(
 }
 
 export function getPublicListHref(section: ManagedContentSection, locale: Locale) {
-  if (section === "demo") return `/${locale}/demo`;
-  if (section === "documentation") return `/${locale}/docs`;
-  return `/${locale}/news`;
+  if (section === "demo") return getLocalePath(locale, "/features/demo");
+  if (section === "documentation") return getLocalePath(locale, "/features/documentation");
+  return getLocalePath(locale, "/company/news");
 }
 
 export function getPublicDetailHref(
@@ -330,7 +364,15 @@ export function getPublicDetailHref(
   locale: Locale,
   slug: string,
 ) {
-  return section === "demo" ? `/${locale}/demo/${slug}` : `/${locale}/docs/${slug}`;
+  if (section === "demo") {
+    return getLocalePath(locale, `/features/demo/${slug}`);
+  }
+
+  if (section === "documentation") {
+    return getLocalePath(locale, `/features/documentation/${slug}`);
+  }
+
+  return getLocalePath(locale, `/company/news/${slug}`);
 }
 
 function normalizeManagedSeedEntry(entry: Partial<ManagedContentEntry>): ManagedContentEntry {
@@ -356,7 +398,12 @@ function normalizeManagedSeedEntry(entry: Partial<ManagedContentEntry>): Managed
     contentFormat: entry.contentFormat ?? "markdown",
     contentType: entry.contentType ?? (entry.section === "news" ? "outlink" : "content"),
     dateIso: entry.dateIso ?? "",
+    downloadCoverImageSrc: entry.downloadCoverImageSrc ?? "",
+    downloadPdfFileName: entry.downloadPdfFileName ?? "",
+    downloadPdfSrc: entry.downloadPdfSrc ?? "",
+    enableDownloadButton: entry.enableDownloadButton ?? false,
     externalUrl: entry.externalUrl ?? "",
+    gatingLevel: entry.gatingLevel ?? "none",
     hideHeroImage: entry.hideHeroImage ?? false,
     id: entry.id ?? "",
     imageSrc: entry.imageSrc ?? "",

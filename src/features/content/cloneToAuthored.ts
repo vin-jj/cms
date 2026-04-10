@@ -2,8 +2,6 @@ import { convertMarkdownToTiptap } from "./markdownToTiptap";
 import {
   createLocalizedContent,
   ensureUniqueSlug,
-  getLocalizedContent,
-  slugifyTitle,
   type ManagedContentEntry,
 } from "./data";
 
@@ -22,7 +20,7 @@ export function cloneAsAuthoredContent(
   },
 ): ManagedContentEntry {
   const nextId = ensureUniqueSlug(
-    `${slugifyTitle(getLocalizedContent(item.title, "en"))}${options?.slugSuffix ?? "-copy"}`,
+    `${item.id}${options?.slugSuffix ?? ""}`,
     siblingItems,
   );
 

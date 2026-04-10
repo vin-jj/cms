@@ -14,8 +14,8 @@
       "assetRefs": [
         {
           "exists": true,
-          "sourcePath": "public/demo/aip-use-case-thumb-15-en.webp",
-          "webPath": "/demo/aip-use-case-thumb-15-en.webp"
+          "sourcePath": "public/demo/use-cases/aip-use-case-thumb-15-en.webp",
+          "webPath": "/demo/use-cases/aip-use-case-thumb-15-en.webp"
         }
       ],
       "bodyPath": "src/content/managed/demo/use-cases/incident-mgmt-ai-agent--21/en.mdx",
@@ -25,8 +25,8 @@
       "hideTableOfContents": true,
       "keywords": [],
       "layout": "Article",
-      "ogImage": "/demo/aip-use-case-thumb-15-en.webp",
-      "rawFrontmatter": "layout: \"Article\"\ncategory: \"use-cases\"\ntitle: \"AIP Use Case: Reporting & Incident Management AI Agent\"\ndescription: \"An AI agent that consolidates operational status, generates standard reports, and orchestrates alerts and actions—streamlining situation management through natural language.\"\ndate: \"2025-10-29\"\nogImage: \"public/demo/aip-use-case-thumb-15-en.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/use-cases/19/aircrew-scheduler-ai-agent\"\n  - \"/features/demo/use-cases/20/military-hr-ai-agent\"\n  - \"/features/demo/use-cases/22/aws-log-analytics-agent\"",
+      "ogImage": "/demo/use-cases/aip-use-case-thumb-15-en.webp",
+      "rawFrontmatter": "layout: \"Article\"\ncategory: \"use-cases\"\ntitle: \"AIP Use Case: Reporting & Incident Management AI Agent\"\ndescription: \"An AI agent that consolidates operational status, generates standard reports, and orchestrates alerts and actions—streamlining situation management through natural language.\"\ndate: \"2025-10-29\"\nogImage: \"public/demo/use-cases/aip-use-case-thumb-15-en.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/use-cases/19/aircrew-scheduler-ai-agent\"\n  - \"/features/demo/use-cases/20/military-hr-ai-agent\"\n  - \"/features/demo/use-cases/22/aws-log-analytics-agent\"",
       "relatedPosts": [
         "/features/demo/use-cases/19/aircrew-scheduler-ai-agent",
         "/features/demo/use-cases/20/military-hr-ai-agent",
@@ -40,7 +40,7 @@
         "title": "AIP Use Case: Reporting & Incident Management AI Agent",
         "description": "An AI agent that consolidates operational status, generates standard reports, and orchestrates alerts and actions—streamlining situation management through natural language.",
         "date": "2025-10-29",
-        "ogImage": "public/demo/aip-use-case-thumb-15-en.webp",
+        "ogImage": "public/demo/use-cases/aip-use-case-thumb-15-en.webp",
         "hideOgImage": true,
         "hideTableOfContents": true,
         "relatedPosts": [
@@ -54,8 +54,8 @@
       "assetRefs": [
         {
           "exists": true,
-          "sourcePath": "public/demo/aip-use-case-thumb-15-ja.webp",
-          "webPath": "/demo/aip-use-case-thumb-15-ja.webp"
+          "sourcePath": "public/demo/use-cases/aip-use-case-thumb-15-ja.webp",
+          "webPath": "/demo/use-cases/aip-use-case-thumb-15-ja.webp"
         }
       ],
       "bodyPath": "src/content/managed/demo/use-cases/incident-mgmt-ai-agent--21/ja.mdx",
@@ -65,8 +65,8 @@
       "hideTableOfContents": true,
       "keywords": [],
       "layout": "Article",
-      "ogImage": "/demo/aip-use-case-thumb-15-ja.webp",
-      "rawFrontmatter": "layout: \"Article\"\ncategory: \"use-cases\"\ntitle: \"AIP活用事例： 報告・インシデント管理AIエージェント\"\ndescription: \"運用ステータスを統合し、標準レポートを生成し、アラートとアクションをオーケストレーションするAIエージェント。自然言語で状況管理を効率化します。\"\ndate: \"2025-10-29\"\nogImage: \"public/demo/aip-use-case-thumb-15-ja.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/use-cases/19/aircrew-scheduler-ai-agent\"\n  - \"/features/demo/use-cases/20/military-hr-ai-agent\"\n  - \"/features/demo/use-cases/22/aws-log-analytics-agent\"",
+      "ogImage": "/demo/use-cases/aip-use-case-thumb-15-ja.webp",
+      "rawFrontmatter": "layout: \"Article\"\ncategory: \"use-cases\"\ntitle: \"AIP活用事例： 報告・インシデント管理AIエージェント\"\ndescription: \"運用ステータスを統合し、標準レポートを生成し、アラートとアクションをオーケストレーションするAIエージェント。自然言語で状況管理を効率化します。\"\ndate: \"2025-10-29\"\nogImage: \"public/demo/use-cases/aip-use-case-thumb-15-ja.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/use-cases/19/aircrew-scheduler-ai-agent\"\n  - \"/features/demo/use-cases/20/military-hr-ai-agent\"\n  - \"/features/demo/use-cases/22/aws-log-analytics-agent\"",
       "relatedPosts": [
         "/features/demo/use-cases/19/aircrew-scheduler-ai-agent",
         "/features/demo/use-cases/20/military-hr-ai-agent",
@@ -80,7 +80,7 @@
         "title": "AIP活用事例： 報告・インシデント管理AIエージェント",
         "description": "運用ステータスを統合し、標準レポートを生成し、アラートとアクションをオーケストレーションするAIエージェント。自然言語で状況管理を効率化します。",
         "date": "2025-10-29",
-        "ogImage": "public/demo/aip-use-case-thumb-15-ja.webp",
+        "ogImage": "public/demo/use-cases/aip-use-case-thumb-15-ja.webp",
         "hideOgImage": true,
         "hideTableOfContents": true,
         "relatedPosts": [

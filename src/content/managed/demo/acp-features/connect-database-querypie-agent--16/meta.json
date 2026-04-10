@@ -14,8 +14,8 @@
       "assetRefs": [
         {
           "exists": true,
-          "sourcePath": "public/tutorial/tu-thumb-dac-9.webp",
-          "webPath": "/tutorial/tu-thumb-dac-9.webp"
+          "sourcePath": "public/demo/acp-features/tu-thumb-dac-9.webp",
+          "webPath": "/demo/acp-features/tu-thumb-dac-9.webp"
         }
       ],
       "bodyPath": "src/content/managed/demo/acp-features/connect-database-querypie-agent--16/en.mdx",
@@ -25,8 +25,8 @@
       "hideTableOfContents": true,
       "keywords": [],
       "layout": "Article",
-      "ogImage": "/tutorial/tu-thumb-dac-9.webp",
-      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"How to Connect to Database via the QueryPie Agent\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/tutorial/tu-thumb-dac-9.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/18/submit-sql-request-workflow\"\n  - \"/features/demo/acp-features/17/submit-sql-export-workflow\"\n  - \"/features/demo/acp-features/15/review-audit-logs\"",
+      "ogImage": "/demo/acp-features/tu-thumb-dac-9.webp",
+      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"How to Connect to Database via the QueryPie Agent\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/demo/acp-features/tu-thumb-dac-9.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/18/submit-sql-request-workflow\"\n  - \"/features/demo/acp-features/17/submit-sql-export-workflow\"\n  - \"/features/demo/acp-features/15/review-audit-logs\"",
       "relatedPosts": [
         "/features/demo/acp-features/18/submit-sql-request-workflow",
         "/features/demo/acp-features/17/submit-sql-export-workflow",
@@ -40,7 +40,7 @@
         "title": "How to Connect to Database via the QueryPie Agent",
         "description": "",
         "date": "2024-11-29",
-        "ogImage": "public/tutorial/tu-thumb-dac-9.webp",
+        "ogImage": "public/demo/acp-features/tu-thumb-dac-9.webp",
         "hideOgImage": true,
         "hideTableOfContents": true,
         "relatedPosts": [
@@ -54,8 +54,8 @@
       "assetRefs": [
         {
           "exists": true,
-          "sourcePath": "public/tutorial/tu-thumb-dac-9.webp",
-          "webPath": "/tutorial/tu-thumb-dac-9.webp"
+          "sourcePath": "public/demo/acp-features/tu-thumb-dac-9.webp",
+          "webPath": "/demo/acp-features/tu-thumb-dac-9.webp"
         }
       ],
       "bodyPath": "src/content/managed/demo/acp-features/connect-database-querypie-agent--16/ko.mdx",
@@ -65,8 +65,8 @@
       "hideTableOfContents": true,
       "keywords": [],
       "layout": "Article",
-      "ogImage": "/tutorial/tu-thumb-dac-9.webp",
-      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"에이전트를 통해 데이터베이스 접속하기\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/tutorial/tu-thumb-dac-9.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/18/submit-sql-request-workflow\"\n  - \"/features/demo/acp-features/17/submit-sql-export-workflow\"\n  - \"/features/demo/acp-features/15/review-audit-logs\"",
+      "ogImage": "/demo/acp-features/tu-thumb-dac-9.webp",
+      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"에이전트를 통해 데이터베이스 접속하기\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/demo/acp-features/tu-thumb-dac-9.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/18/submit-sql-request-workflow\"\n  - \"/features/demo/acp-features/17/submit-sql-export-workflow\"\n  - \"/features/demo/acp-features/15/review-audit-logs\"",
       "relatedPosts": [
         "/features/demo/acp-features/18/submit-sql-request-workflow",
         "/features/demo/acp-features/17/submit-sql-export-workflow",
@@ -80,7 +80,7 @@
         "title": "에이전트를 통해 데이터베이스 접속하기",
         "description": "",
         "date": "2024-11-29",
-        "ogImage": "public/tutorial/tu-thumb-dac-9.webp",
+        "ogImage": "public/demo/acp-features/tu-thumb-dac-9.webp",
         "hideOgImage": true,
         "hideTableOfContents": true,
         "relatedPosts": [
@@ -94,8 +94,8 @@
       "assetRefs": [
         {
           "exists": true,
-          "sourcePath": "public/tutorial/tu-thumb-dac-9.webp",
-          "webPath": "/tutorial/tu-thumb-dac-9.webp"
+          "sourcePath": "public/demo/acp-features/tu-thumb-dac-9.webp",
+          "webPath": "/demo/acp-features/tu-thumb-dac-9.webp"
         }
       ],
       "bodyPath": "src/content/managed/demo/acp-features/connect-database-querypie-agent--16/ja.mdx",
@@ -105,8 +105,8 @@
       "hideTableOfContents": true,
       "keywords": [],
       "layout": "Article",
-      "ogImage": "/tutorial/tu-thumb-dac-9.webp",
-      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"QueryPieエージェントを使用してデータベースに接続する方法\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/tutorial/tu-thumb-dac-9.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/18/submit-sql-request-workflow\"\n  - \"/features/demo/acp-features/17/submit-sql-export-workflow\"\n  - \"/features/demo/acp-features/15/review-audit-logs\"",
+      "ogImage": "/demo/acp-features/tu-thumb-dac-9.webp",
+      "rawFrontmatter": "layout: \"Article\"\ncategory: \"acp-features\"\ntitle: \"QueryPieエージェントを使用してデータベースに接続する方法\"\ndescription: \"\"\ndate: \"2024-11-29\"\nogImage: \"public/demo/acp-features/tu-thumb-dac-9.webp\"\nhideOgImage: true\nhideTableOfContents: true\nrelatedPosts:\n  - \"/features/demo/acp-features/18/submit-sql-request-workflow\"\n  - \"/features/demo/acp-features/17/submit-sql-export-workflow\"\n  - \"/features/demo/acp-features/15/review-audit-logs\"",
       "relatedPosts": [
         "/features/demo/acp-features/18/submit-sql-request-workflow",
         "/features/demo/acp-features/17/submit-sql-export-workflow",
@@ -120,7 +120,7 @@
         "title": "QueryPieエージェントを使用してデータベースに接続する方法",
         "description": "",
         "date": "2024-11-29",
-        "ogImage": "public/tutorial/tu-thumb-dac-9.webp",
+        "ogImage": "public/demo/acp-features/tu-thumb-dac-9.webp",
         "hideOgImage": true,
         "hideTableOfContents": true,
         "relatedPosts": [

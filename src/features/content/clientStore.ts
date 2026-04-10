@@ -10,9 +10,39 @@ import {
 
 export const MANAGED_CONTENT_STORE_EVENT = "querypie:managed-content:changed";
 
-function emitChange() {
+type ManagedContentChangeDetail = {
+  section?: ManagedContentSection;
+  shouldRefetch?: boolean;
+};
+
+const snapshotCache = new Map<string, ManagedContentEntry[]>();
+
+function getCacheKey(section?: ManagedContentSection) {
+  return section ?? "__all__";
+}
+
+function writeSnapshotCache(items: ManagedContentEntry[], section?: ManagedContentSection) {
+  snapshotCache.set(getCacheKey(section), items);
+
+  if (section) {
+    const allItems = snapshotCache.get(getCacheKey());
+
+    if (allItems) {
+      snapshotCache.set(
+        getCacheKey(),
+        [...allItems.filter((item) => item.section !== section), ...items],
+      );
+    }
+  }
+}
+
+function readSnapshotCache(section?: ManagedContentSection) {
+  return snapshotCache.get(getCacheKey(section));
+}
+
+function emitChange(detail?: ManagedContentChangeDetail) {
   if (typeof window === "undefined") return;
-  window.dispatchEvent(new Event(MANAGED_CONTENT_STORE_EVENT));
+  window.dispatchEvent(new CustomEvent<ManagedContentChangeDetail>(MANAGED_CONTENT_STORE_EVENT, { detail }));
 }
 
 async function readState(section?: ManagedContentSection) {
@@ -26,7 +56,9 @@ async function readState(section?: ManagedContentSection) {
   }
 
   const payload = (await response.json()) as { items?: ManagedContentEntry[] };
-  return payload.items ?? [];
+  const items = payload.items ?? [];
+  writeSnapshotCache(items, section);
+  return items;
 }
 
 export async function getManagedContentsSnapshot(section?: ManagedContentSection) {
@@ -42,11 +74,13 @@ export async function persistManagedContents(items: ManagedContentEntry[]) {
     method: "POST",
   });
 
+  const payload = (await response.json().catch(() => ({}))) as { error?: string };
+
   if (!response.ok) {
-    throw new Error("Failed to persist content state.");
+    throw new Error(payload.error ?? "Failed to persist content state.");
   }
 
-  emitChange();
+  emitChange({ shouldRefetch: true });
 }
 
 export async function upsertManagedContent(item: ManagedContentEntry, currentId?: string) {
@@ -64,7 +98,7 @@ export async function upsertManagedContent(item: ManagedContentEntry, currentId?
     throw new Error(payload.error ?? "Failed to save content.");
   }
 
-  emitChange();
+  emitChange({ section: payload.item.section, shouldRefetch: true });
   return payload.item;
 }
 
@@ -83,7 +117,7 @@ export async function deleteManagedContent(id: string, item?: ManagedContentEntr
     throw new Error(payload.error ?? "Failed to delete content.");
   }
 
-  emitChange();
+  emitChange({ section: item?.section, shouldRefetch: true });
 }
 
 export async function updateManagedContentStatus(
@@ -91,6 +125,17 @@ export async function updateManagedContentStatus(
   status: ManagedContentStatus,
   item?: ManagedContentEntry,
 ) {
+  const cacheSection = item?.section;
+  const previousSectionSnapshot = cacheSection ? readSnapshotCache(cacheSection) : undefined;
+
+  if (item && previousSectionSnapshot) {
+    writeSnapshotCache(
+      previousSectionSnapshot.map((entry) => (entry.id === id ? { ...entry, status } : entry)),
+      cacheSection,
+    );
+    emitChange({ section: cacheSection, shouldRefetch: false });
+  }
+
   const response = await fetch("/api/admin/content/state", {
     body: JSON.stringify({ id, item, status }),
     headers: {
@@ -102,10 +147,14 @@ export async function updateManagedContentStatus(
   const payload = (await response.json()) as { error?: string };
 
   if (!response.ok) {
+    if (cacheSection && previousSectionSnapshot) {
+      writeSnapshotCache(previousSectionSnapshot, cacheSection);
+      emitChange({ section: cacheSection, shouldRefetch: false });
+    }
     throw new Error(payload.error ?? "Failed to update content status.");
   }
 
-  emitChange();
+  emitChange({ section: cacheSection, shouldRefetch: false });
 }
 
 export async function reorderManagedContents(orderedItems: ManagedContentEntry[]) {
@@ -138,7 +187,9 @@ export function useManagedContents(
 ) {
   const initialItemsRef = useRef(initialItems);
   const [items, setItems] = useState<ManagedContentEntry[]>(() =>
-    initialItemsRef.current ?? (section ? getSeedManagedContents(section) : getSeedManagedContents()),
+    readSnapshotCache(section) ??
+      initialItemsRef.current ??
+      (section ? getSeedManagedContents(section) : getSeedManagedContents()),
   );
 
   useEffect(() => {
@@ -156,14 +207,78 @@ export function useManagedContents(
         });
     };
 
+    const handleChange = (event: Event) => {
+      const detail = (event as CustomEvent<ManagedContentChangeDetail>).detail;
+      const matchesSection = !detail?.section || detail.section === section;
+
+      if (!matchesSection) {
+        return;
+      }
+
+      if (detail?.shouldRefetch === false) {
+        const cached = readSnapshotCache(section);
+
+        if (cached && active) {
+          setItems(cached);
+        }
+
+        return;
+      }
+
+      sync();
+    };
+
     sync();
-    window.addEventListener(MANAGED_CONTENT_STORE_EVENT, sync);
+    window.addEventListener(MANAGED_CONTENT_STORE_EVENT, handleChange as EventListener);
 
     return () => {
       active = false;
-      window.removeEventListener(MANAGED_CONTENT_STORE_EVENT, sync);
+      window.removeEventListener(MANAGED_CONTENT_STORE_EVENT, handleChange as EventListener);
     };
   }, [section]);
 
   return items;
+}
+
+export function useManagedContentsLoading(section?: ManagedContentSection) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    let active = true;
+
+    const sync = () => {
+      if (!active) return;
+      setIsLoading(true);
+
+      void getManagedContentsSnapshot(section)
+        .catch(() => {
+          // Loading state should still resolve even if sync falls back to cached/initial data elsewhere.
+        })
+        .finally(() => {
+          if (!active) return;
+          setIsLoading(false);
+        });
+    };
+
+    const handleChange = (event: Event) => {
+      const detail = (event as CustomEvent<ManagedContentChangeDetail>).detail;
+      const matchesSection = !detail?.section || detail.section === section;
+
+      if (!matchesSection || detail?.shouldRefetch === false) {
+        return;
+      }
+
+      sync();
+    };
+
+    sync();
+    window.addEventListener(MANAGED_CONTENT_STORE_EVENT, handleChange as EventListener);
+
+    return () => {
+      active = false;
+      window.removeEventListener(MANAGED_CONTENT_STORE_EVENT, handleChange as EventListener);
+    };
+  }, [section]);
+
+  return isLoading;
 }
